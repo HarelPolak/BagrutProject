@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/study"
+        android:title="Study"
+        android:icon="@drawable/baseline_menu_book_24"/>
+
+    <item
+        android:id="@+id/timer"
+        android:title="Timer"
+        android:icon="@drawable/baseline_timer_24"/>
+
+    <item
+        android:id="@+id/stats"
+        android:title="Stats"
+        android:icon="@drawable/baseline_insert_chart_outlined_24"/>
+</menu>
