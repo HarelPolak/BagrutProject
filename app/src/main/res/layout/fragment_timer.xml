@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF5722"
+    android:background="#2196F3"
     tools:context=".TimerFragment">
 
     <TextView
+        android:id="@+id/tvTimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Timer Fragment"
-        android:textSize="30dp"
+        android:text="00:00"
+        android:textColor="@color/white"
+        android:textSize="80dp"
         android:gravity="center"
         android:layout_gravity="center"/>
 
