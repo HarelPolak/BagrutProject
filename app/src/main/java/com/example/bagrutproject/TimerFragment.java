@@ -23,14 +23,10 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_timer, container, false);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        tvTimer = getView().findViewById(R.id.tvTimer);
+        View view = inflater.inflate(R.layout.fragment_timer, container, false);
+        tvTimer = view.findViewById(R.id.tvTimer);
         tvTimer.setOnTouchListener(this);
-        super.onCreate(savedInstanceState);
+        return view;
     }
 
     @Override
@@ -38,7 +34,9 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
         if(view == tvTimer){
             if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
                 tvTimer.setTextColor(Color.GREEN);
+                return true;
             }
+
             else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
                 tvTimer.setTextColor(Color.WHITE);
             }
