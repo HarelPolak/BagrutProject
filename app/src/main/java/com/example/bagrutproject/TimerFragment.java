@@ -44,7 +44,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
         if(view == view_timer_fragment){
             if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
                 tvTimer.setTextColor(Color.RED);
-                handler.postDelayed(runnable, 700);
+                handler.postDelayed(runnable, 500);
                 return true;
             }
             else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
