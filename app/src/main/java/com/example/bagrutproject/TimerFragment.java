@@ -19,6 +19,7 @@ import java.util.TimerTask;
 public class TimerFragment extends Fragment implements View.OnTouchListener {
 
     TextView tvTimer;
+    TextView tvScramble;
     View view_timer_fragment;
     boolean timerShouldStart;
     boolean timerIsRunning;
@@ -51,6 +52,8 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
         timerIsRunning = false;
         timerShouldStart = false;
         tvTimer.setText(getTimerText());
+        tvScramble = view.findViewById(R.id.tvScramble);
+        tvScramble.setText(ScrambleGenerator.generateScramble3x3());
         return view;
     }
 
@@ -58,7 +61,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
     public void onDestroy() {
         super.onDestroy();
         if(timerIsRunning){
-            timerTask.cancel();
+            stopTimer();
         }
     }
 
@@ -66,7 +69,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
     public void onPause() {
         super.onPause();
         if(timerIsRunning){
-            timerTask.cancel();
+            stopTimer();
         }
     }
 
@@ -75,8 +78,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
         if (view == view_timer_fragment) {
             if(timerIsRunning){
                 if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
-                    timerTask.cancel();
-                    timerIsRunning = false;
+                    stopTimer();
                     return true;
                 }
             }
@@ -112,6 +114,12 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
             }
         };
         timer.scheduleAtFixedRate(timerTask, 0, 10);
+    }
+
+    private void stopTimer(){
+        timerTask.cancel();
+        timerIsRunning = false;
+        tvScramble.setText(ScrambleGenerator.generateScramble3x3());
     }
 
     private String getTimerText() {

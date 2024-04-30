@@ -48,7 +48,6 @@
             android:id="@+id/tvScramble"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="D' B2 U B2 F2 R2 U B2 D' B2 U' B' D' F' D' L' D2 U R D' U'"
             android:textColor="#DCDCDC"
             android:textSize="15dp"
             android:gravity="center" />
