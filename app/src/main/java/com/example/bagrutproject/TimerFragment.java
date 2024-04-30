@@ -57,7 +57,17 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        timerTask.cancel();
+        if(timerIsRunning){
+            timerTask.cancel();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(timerIsRunning){
+            timerTask.cancel();
+        }
     }
 
     @Override

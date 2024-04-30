@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.timer);
+
+        ScrambleGenerator.generateScramble3x3();
     }
     StudyFragment studyFragment = new StudyFragment();
     TimerFragment timerFragment = new TimerFragment();
