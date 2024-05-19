@@ -9,11 +9,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
 
     BottomNavigationView bottomNavigationView;
 
@@ -57,6 +61,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_top_menu, menu);
+        MenuItem item = menu.findItem(R.id.spinner);
+        Spinner spinner = (Spinner) item.getActionView();
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.spinner_list_item_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -73,5 +84,23 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             Toast.makeText(this, "About", Toast.LENGTH_LONG).show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        if(i==0){
+            Toast.makeText(this, "2x2", Toast.LENGTH_LONG).show();
+        }
+        else if(i==1){
+            Toast.makeText(this, "3x3", Toast.LENGTH_LONG).show();
+        }
+        else if(i==2){
+            Toast.makeText(this, "4x4", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
