@@ -20,6 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
 
     BottomNavigationView bottomNavigationView;
+    public static int cubeType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         adapter.setDropDownViewResource(R.layout.layout_drop_list);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+        cubeType = spinner.getSelectedItemPosition();
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -88,15 +90,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if(i==0){
-            Toast.makeText(this, "2x2", Toast.LENGTH_LONG).show();
-        }
-        else if(i==1){
-            Toast.makeText(this, "3x3", Toast.LENGTH_LONG).show();
-        }
-        else if(i==2){
-            Toast.makeText(this, "4x4", Toast.LENGTH_LONG).show();
-        }
+        cubeType = i;
     }
 
     @Override

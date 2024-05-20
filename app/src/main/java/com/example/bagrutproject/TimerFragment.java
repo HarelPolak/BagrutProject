@@ -53,7 +53,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
         timerShouldStart = false;
         tvTimer.setText(getTimerText());
         tvScramble = view.findViewById(R.id.tvScramble);
-        tvScramble.setText(ScrambleGenerator.generateScramble3x3());
+        tvScramble.setText(ScrambleGenerator.generateScramble());
         return view;
     }
 
@@ -119,7 +119,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
     private void stopTimer(){
         timerTask.cancel();
         timerIsRunning = false;
-        tvScramble.setText(ScrambleGenerator.generateScramble3x3());
+        tvScramble.setText(ScrambleGenerator.generateScramble());
     }
 
     private String getTimerText() {
