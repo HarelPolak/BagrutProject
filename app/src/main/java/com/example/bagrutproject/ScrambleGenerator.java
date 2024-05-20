@@ -28,5 +28,24 @@ public class ScrambleGenerator {
         return String.join(" ", scramble);
     }
 
+    public static String generateScramble2x2(){
+        int scrambleLength = (int)(Math.random()*3+9), coulmn, prevCoulmn=0;
+        String randomMove;
+        String[] scramble = new String[scrambleLength];
+        for(int i=0; i<scrambleLength; i++){
+            coulmn = (int)(Math.random()*6);
+            randomMove = moves2x2[coulmn][(int)(Math.random()*3)];
+            if(i!=0){
+                while((coulmn==prevCoulmn) || (coulmn==0 && prevCoulmn==1) || (coulmn==1 && prevCoulmn==0) || (coulmn==2 && prevCoulmn==3) || (coulmn==3 && prevCoulmn==2) || (coulmn==4 && coulmn==5) || (coulmn==5 && prevCoulmn==4)){
+                    coulmn = (int)(Math.random()*6);
+                    randomMove = moves2x2[coulmn][(int)(Math.random()*3)];
+                }
+            }
+            prevCoulmn = coulmn;
+            scramble[i] = randomMove;
+        }
+        return String.join(" ", scramble);
+    }
+
 
 }

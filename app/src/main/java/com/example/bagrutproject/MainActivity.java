@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         MenuItem item = menu.findItem(R.id.spinner);
         Spinner spinner = (Spinner) item.getActionView();
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.spinner_list_item_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                R.array.spinner_list_item_array, R.layout.layout_drop_title);
+        adapter.setDropDownViewResource(R.layout.layout_drop_list);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
         return super.onCreateOptionsMenu(menu);
