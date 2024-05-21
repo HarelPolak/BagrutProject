@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.timer);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("sp",MODE_PRIVATE);
+        cubeType = sharedPreferences.getInt("cubeType", 0);
     }
     StudyFragment studyFragment = new StudyFragment();
     TimerFragment timerFragment = new TimerFragment();
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         adapter.setDropDownViewResource(R.layout.layout_drop_list);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        cubeType = spinner.getSelectedItemPosition();
+        spinner.setSelection(cubeType);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -91,6 +94,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         cubeType = i;
+        SharedPreferences sharedPreferences = getSharedPreferences("sp",MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+        myEdit.putInt("cubeType", i);
+        myEdit.commit();
+        //0:2x2, 1:3x3, 2:4x4
+        if(bottomNavigationView.getSelectedItemId() == R.id.timer){
+            timerFragment.refresh();
+        }
     }
 
     @Override

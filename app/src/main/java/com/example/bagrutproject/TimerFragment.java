@@ -131,4 +131,11 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
         return String.format("%02d", minutes) + ":" + String.format("%05.2f", seconds);
     }
 
+    public void refresh(){
+        if(timerIsRunning)
+            stopTimer();
+        else
+            tvScramble.setText(ScrambleGenerator.generateScramble());
+    }
+
 }
