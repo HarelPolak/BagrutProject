@@ -10,26 +10,34 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/green"
-        android:orientation="horizontal">
+        android:layout_height="60dp"
+        android:background="@color/green">
 
         <ImageButton
+            android:id="@+id/ibEdit"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_margin="10dp"
             android:background="@drawable/baseline_edit_note_24"
-            android:id="@+id/ivEdit"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/ibDelete"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/baseline_delete_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_height="match_parent"
         android:id="@+id/view_timer_fragment"
         android:orientation="vertical"
         android:gravity="center">
@@ -50,7 +58,8 @@
             android:layout_height="wrap_content"
             android:textColor="#DCDCDC"
             android:textSize="15dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp"/>
 
     </LinearLayout>
 

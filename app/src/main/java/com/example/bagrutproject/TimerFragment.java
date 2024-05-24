@@ -11,20 +11,23 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TimerFragment extends Fragment implements View.OnTouchListener {
+public class TimerFragment extends Fragment implements View.OnTouchListener, View.OnClickListener {
 
     TextView tvTimer;
     TextView tvScramble;
     View view_timer_fragment;
-    boolean timerShouldStart;
-    boolean timerIsRunning;
     Timer timer;
     TimerTask timerTask;
+    ImageButton ibEdit, ibDelete;
+    boolean timerShouldStart;
+    boolean timerIsRunning;
     double time = 0.0;
 
     private final Handler handler = new Handler();
@@ -48,6 +51,12 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
         view_timer_fragment = view.findViewById(R.id.view_timer_fragment);
         tvTimer = view.findViewById(R.id.tvTimer);
         view_timer_fragment.setOnTouchListener(this);
+
+        ibEdit = view.findViewById(R.id.ibEdit);
+        ibDelete = view.findViewById(R.id.ibDelete);
+        ibEdit.setOnClickListener(this);
+        ibDelete.setOnClickListener(this);
+
         timer = new Timer();
         timerIsRunning = false;
         timerShouldStart = false;
@@ -138,4 +147,13 @@ public class TimerFragment extends Fragment implements View.OnTouchListener {
             tvScramble.setText(ScrambleGenerator.generateScramble());
     }
 
+    @Override
+    public void onClick(View view) {
+        if(view == ibEdit){
+            Toast.makeText(this.getContext(), "Edit", Toast.LENGTH_LONG).show();
+        }
+        else if(view == ibDelete){
+            Toast.makeText(this.getContext(), "Delete", Toast.LENGTH_LONG).show();
+        }
+    }
 }
