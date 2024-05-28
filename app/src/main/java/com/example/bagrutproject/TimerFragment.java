@@ -150,10 +150,10 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     @Override
     public void onClick(View view) {
         if(view == ibEdit){
-            Toast.makeText(this.getContext(), "Edit", Toast.LENGTH_LONG).show();
+            Toast.makeText(this.getContext(), "edit", Toast.LENGTH_LONG).show();
         }
         else if(view == ibDelete){
-            Toast.makeText(this.getContext(), "Delete", Toast.LENGTH_LONG).show();
+            Toast.makeText(this.getContext(), "delete", Toast.LENGTH_LONG).show();
         }
     }
 }
