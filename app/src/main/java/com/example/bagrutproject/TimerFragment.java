@@ -1,6 +1,7 @@
 package com.example.bagrutproject;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -21,6 +22,7 @@ import java.util.TimerTask;
 
 public class TimerFragment extends Fragment implements View.OnTouchListener, View.OnClickListener {
 
+    Dialog editDialog;
     TextView tvTimer;
     TextView tvScramble;
     View view_timer_fragment;
@@ -163,7 +165,9 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     @Override
     public void onClick(View view) {
         if(view == ibEdit){
-            Toast.makeText(this.getContext(), "edit", Toast.LENGTH_LONG).show();
+            editDialog = new Dialog(getContext());
+            editDialog.setContentView(R.layout.layout_edit);
+            editDialog.show();
         }
         else if(view == ibDelete){
             if(currentSolveId!=-1){
