@@ -58,7 +58,19 @@ public class SolveHelper extends SQLiteOpenHelper {
         long insertId=database.insert(SolveHelper.TABLE_SOLVE, null, values);
         s.setSolveId(insertId);
         return s;
+    }
 
+    public long deleteByRow(long rowId) {
+        return database.delete(SolveHelper.TABLE_SOLVE, SolveHelper.COLUMN_ID + "=" + rowId, null);
+    }
 
+    public long updateByRow(Solve s) {
+        ContentValues values=new ContentValues();
+        values.put(SolveHelper.COLUMN_ID, s.getSolveId());
+        values.put(SolveHelper.COLUMN_TIME, s.getTime());
+        values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
+        values.put(SolveHelper.COLUMN_COMMENT, s.getComment());
+        values.put(SolveHelper.COLUMN_DATE, s.getDate());
+        return database.update(SolveHelper.TABLE_SOLVE, values, SolveHelper.COLUMN_ID +"=" + s.getSolveId(), null);
     }
 }

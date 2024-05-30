@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -26,6 +27,10 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     Timer timer;
     TimerTask timerTask;
     ImageButton ibEdit, ibDelete;
+    Solve currentSolve;
+    SolveHelper sh;
+    String scramble;
+    long currentSolveId;
     boolean timerShouldStart;
     boolean timerIsRunning;
     double time = 0.0;
@@ -57,12 +62,15 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         ibEdit.setOnClickListener(this);
         ibDelete.setOnClickListener(this);
 
+        sh = new SolveHelper(getContext());
+        currentSolveId = -1;
         timer = new Timer();
         timerIsRunning = false;
         timerShouldStart = false;
         tvTimer.setText(getTimerText());
         tvScramble = view.findViewById(R.id.tvScramble);
-        tvScramble.setText(ScrambleGenerator.generateScramble());
+        scramble = ScrambleGenerator.generateScramble();
+        tvScramble.setText(scramble);
         return view;
     }
 
@@ -109,6 +117,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     }
 
     private void startTimer() {
+        currentSolve = new Solve(MainActivity.cubeType, 0, scramble, "", Calendar.getInstance().getTime().toString());
         timerTask = new TimerTask() {
 
             @Override
@@ -128,7 +137,9 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     private void stopTimer(){
         timerTask.cancel();
         timerIsRunning = false;
-        tvScramble.setText(ScrambleGenerator.generateScramble());
+        addSolve();
+        scramble = ScrambleGenerator.generateScramble();
+        tvScramble.setText(scramble);
     }
 
     private String getTimerText() {
@@ -143,8 +154,10 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     public void refresh(){
         if(timerIsRunning)
             stopTimer();
-        else
-            tvScramble.setText(ScrambleGenerator.generateScramble());
+        else{
+            scramble = ScrambleGenerator.generateScramble();
+            tvScramble.setText(scramble);
+        }
     }
 
     @Override
@@ -153,7 +166,22 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
             Toast.makeText(this.getContext(), "edit", Toast.LENGTH_LONG).show();
         }
         else if(view == ibDelete){
-            Toast.makeText(this.getContext(), "delete", Toast.LENGTH_LONG).show();
+            if(currentSolveId!=-1){
+                sh.open();
+                sh.deleteByRow(currentSolveId);
+                sh.close();
+                tvTimer.setText("00.00");
+                time = 0.0;
+            }
         }
+    }
+
+    private void addSolve(){
+        currentSolve.setTime(time);
+        sh.open();
+        currentSolve = sh.createSolve(currentSolve);
+        currentSolveId = currentSolve.getSolveId();
+        sh.close();
+        Toast.makeText(this.getContext(), "added", Toast.LENGTH_LONG).show();
     }
 }

@@ -17,20 +17,20 @@
 
         <ImageButton
             android:id="@+id/ibEdit"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_margin="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
             android:background="@drawable/baseline_edit_note_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/ibDelete"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_margin="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
             android:background="@drawable/baseline_delete_24"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ibEdit"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
