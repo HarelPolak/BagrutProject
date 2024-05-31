@@ -1,7 +1,6 @@
 package com.example.bagrutproject;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -22,27 +21,24 @@ import java.util.TimerTask;
 
 public class TimerFragment extends Fragment implements View.OnTouchListener, View.OnClickListener {
 
-    Dialog editDialog;
-    TextView tvTimer;
-    TextView tvScramble;
     View view_timer_fragment;
+    EditDialogClass editDialogClass;
+    TextView tvTimer, tvScramble;
+    ImageButton ibEdit, ibDelete;
     Timer timer;
     TimerTask timerTask;
-    ImageButton ibEdit, ibDelete;
     Solve currentSolve;
     SolveHelper sh;
     String scramble;
-    long currentSolveId;
-    boolean timerShouldStart;
-    boolean timerIsRunning;
-    double time = 0.0;
+    boolean timerShouldStart, timerIsRunning;
+    double solveTime = 0.0;
 
     private final Handler handler = new Handler();
     private final Runnable runnable = new Runnable() {
         public void run() {
             tvTimer.setTextColor(Color.GREEN);
             tvTimer.setText("00.00");
-            time = 0.0;
+            solveTime = 0.0;
             timerShouldStart = true;
         }
     };
@@ -65,11 +61,11 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         ibDelete.setOnClickListener(this);
 
         sh = new SolveHelper(getContext());
-        currentSolveId = -1;
+
         timer = new Timer();
         timerIsRunning = false;
         timerShouldStart = false;
-        tvTimer.setText(getTimerText());
+        tvTimer.setText(UtilActivity.getTimerText(solveTime));
         tvScramble = view.findViewById(R.id.tvScramble);
         scramble = ScrambleGenerator.generateScramble();
         tvScramble.setText(scramble);
@@ -119,7 +115,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     }
 
     private void startTimer() {
-        currentSolve = new Solve(MainActivity.cubeType, 0, scramble, "", Calendar.getInstance().getTime().toString());
+        currentSolve = new Solve(-1, MainActivity.cubeType, 0, 0, scramble, "", Calendar.getInstance().getTime().toString());
         timerTask = new TimerTask() {
 
             @Override
@@ -127,8 +123,8 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
                 ((Activity)getContext()).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        time += 0.01;
-                        tvTimer.setText(getTimerText());
+                        solveTime += 0.01;
+                        tvTimer.setText(UtilActivity.getTimerText(solveTime));
                     }
                 });
             }
@@ -144,15 +140,6 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         tvScramble.setText(scramble);
     }
 
-    private String getTimerText() {
-        double seconds = time % 60;
-        int minutes = (int)time / 60;
-
-        if(minutes==0)
-            return String.format("%05.2f", seconds);
-        return String.format("%02d", minutes) + ":" + String.format("%05.2f", seconds);
-    }
-
     public void refresh(){
         if(timerIsRunning)
             stopTimer();
@@ -165,27 +152,33 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     @Override
     public void onClick(View view) {
         if(view == ibEdit){
-            editDialog = new Dialog(getContext());
-            editDialog.setContentView(R.layout.layout_edit);
-            editDialog.show();
+            if(currentSolve!=null && currentSolve.getSolveId()!=-1){
+                editDialogClass = new EditDialogClass();
+                editDialogClass.showEditDialog((Activity) getContext(), currentSolve);
+            }
         }
         else if(view == ibDelete){
-            if(currentSolveId!=-1){
-                sh.open();
-                sh.deleteByRow(currentSolveId);
-                sh.close();
-                tvTimer.setText("00.00");
-                time = 0.0;
+            if(currentSolve!=null && currentSolve.getSolveId()!=-1){
+                deleteRecentSolve();
             }
         }
     }
 
     private void addSolve(){
-        currentSolve.setTime(time);
+        currentSolve.setTime(solveTime);
         sh.open();
         currentSolve = sh.createSolve(currentSolve);
-        currentSolveId = currentSolve.getSolveId();
         sh.close();
         Toast.makeText(this.getContext(), "added", Toast.LENGTH_LONG).show();
+    }
+
+    private void deleteRecentSolve(){
+        sh.open();
+        sh.deleteByRow(currentSolve.getSolveId());
+        sh.close();
+        currentSolve = null;
+        tvTimer.setText("00.00");
+        solveTime = 0.0;
+        Toast.makeText(this.getContext(), "deleted", Toast.LENGTH_LONG).show();
     }
 }

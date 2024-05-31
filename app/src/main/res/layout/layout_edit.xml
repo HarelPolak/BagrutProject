@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="00.00"
-        android:textSize="40dp"
-        android:paddingTop="10dp"
-        android:gravity="center"
-        android:id="@+id/tvTimeDialog"/>
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tvTimeDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00.00"
+            android:textSize="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTypeDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3x3"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,6 +92,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="10dp"
+        android:paddingVertical="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -82,7 +100,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
             android:text="DNF"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:id="@+id/tvDnfDialog"/>
 
         <TextView
@@ -90,7 +108,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
             android:text="+2"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:id="@+id/tvPlus2Dialog"/>
 
         <TextView
@@ -98,28 +116,31 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
             android:text="No Penalty"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:id="@+id/tvNoDialog"/>
-
-        <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:paddingHorizontal="10dp"
-            android:background="@drawable/baseline_delete_24"
-            android:id="@+id/ibDeleteDialog"/>
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="10dp"
-        android:orientation="horizontal">
+        android:paddingHorizontal="10dp">
 
         <Button
+            android:id="@+id/btnOkDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ok"
             android:textSize="20dp"
-            android:id="@+id/btnOkDialog"/>
-    </LinearLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ibDeleteDialog"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/baseline_delete_24"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

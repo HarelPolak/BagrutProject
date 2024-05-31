@@ -14,6 +14,7 @@ public class SolveHelper extends SQLiteOpenHelper {
 
     public static final String COLUMN_ID="solveId";
     public static final String COLUMN_TYPE="cubeType";
+    public static final String COLUMN_PENALTY="cubeType";
     public static final String COLUMN_TIME="time";
     public static final String COLUMN_SCRAMBLE="scramble";
     public static final String COLUMN_COMMENT="comment";
@@ -22,7 +23,7 @@ public class SolveHelper extends SQLiteOpenHelper {
     SQLiteDatabase database;
 
     private static final String CREATE_TABLE_SOLVE="CREATE TABLE IF NOT EXISTS " +
-            TABLE_SOLVE + "(" + COLUMN_ID +  " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_TYPE + " INTEGER," + COLUMN_TIME + " REAL," + COLUMN_SCRAMBLE + " VARCHAR,"
+            TABLE_SOLVE + "(" + COLUMN_ID +  " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_TYPE + " INTEGER," + COLUMN_PENALTY + " INTEGER," + COLUMN_TIME + " REAL," + COLUMN_SCRAMBLE + " VARCHAR,"
             + COLUMN_COMMENT +" VARCHAR," + COLUMN_DATE +   " VARCHAR "  +   ");";
 
 
@@ -50,6 +51,7 @@ public class SolveHelper extends SQLiteOpenHelper {
     public Solve createSolve(Solve s)
     {
         ContentValues values=new ContentValues();
+        values.put(SolveHelper.COLUMN_PENALTY, s.getTime());
         values.put(SolveHelper.COLUMN_TIME, s.getTime());
         values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
         values.put(SolveHelper.COLUMN_COMMENT, s.getComment());
@@ -67,6 +69,7 @@ public class SolveHelper extends SQLiteOpenHelper {
     public long updateByRow(Solve s) {
         ContentValues values=new ContentValues();
         values.put(SolveHelper.COLUMN_ID, s.getSolveId());
+        values.put(SolveHelper.COLUMN_PENALTY, s.getSolveId());
         values.put(SolveHelper.COLUMN_TIME, s.getTime());
         values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
         values.put(SolveHelper.COLUMN_COMMENT, s.getComment());

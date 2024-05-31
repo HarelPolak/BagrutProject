@@ -5,23 +5,26 @@ import java.util.Date;
 public class Solve {
     private long solveId;
     private int cubeType;
+    private int penalty;
     private double time;
     private String scramble;
     private String comment;
     private String date;
 
-    public Solve(long solveId, int cubeType, double time, String scramble, String comment, String date) {
+    public Solve(long solveId, int cubeType, int penalty, double time, String scramble, String comment, String date) {
         this.solveId = solveId;
         this.cubeType = cubeType;
+        this.penalty = penalty;
         this.time = time;
         this.scramble = scramble;
         this.comment = comment;
         this.date = date;
     }
 
-    public Solve(int cubeType, double time, String scramble, String comment, String date) {
+    public Solve(int cubeType, int penalty, double time, String scramble, String comment, String date) {
         this.solveId = solveId;
         this.cubeType = cubeType;
+        this.penalty = penalty;
         this.time = time;
         this.scramble = scramble;
         this.comment = comment;
@@ -70,6 +73,14 @@ public class Solve {
 
     public String getDate() {
         return date;
+    }
+
+    public int getPenalty() {
+        return penalty;
+    }
+
+    public void setPenalty(int penalty) {
+        this.penalty = penalty;
     }
 
     public void setDate(String date) {
