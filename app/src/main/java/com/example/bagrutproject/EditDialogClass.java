@@ -26,7 +26,7 @@ public class EditDialogClass implements View.OnClickListener {
     public Button btnOk;
     ImageButton ibDelete;
 
-    public void showEditDialog(Activity activity, Solve s){
+    public Dialog showEditDialog(Activity activity, Solve s){
         a = activity;
         d = new Dialog(a);
         d.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -51,7 +51,7 @@ public class EditDialogClass implements View.OnClickListener {
         ibDelete = d.findViewById(R.id.ibDeleteDialog);
         ibDelete.setOnClickListener(this);
 
-        tvTime.setText(UtilActivity.getTimerText(s.getTime()));
+        tvTime.setText(String.valueOf(s.getTime()));
         if(s.getCubeType() == 0)
             tvType.setText("2x2");
         else if(s.getCubeType() == 1)
@@ -72,6 +72,7 @@ public class EditDialogClass implements View.OnClickListener {
         }
 
         d.show();
+        return d;
     }
 
 

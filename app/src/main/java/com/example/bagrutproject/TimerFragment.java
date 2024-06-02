@@ -31,14 +31,14 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     SolveHelper sh;
     String scramble;
     boolean timerShouldStart, timerIsRunning;
-    double solveTime = 0.0;
+    long solveTime = 0;
 
     private final Handler handler = new Handler();
     private final Runnable runnable = new Runnable() {
         public void run() {
             tvTimer.setTextColor(Color.GREEN);
             tvTimer.setText("00.00");
-            solveTime = 0.0;
+            solveTime = 0;
             timerShouldStart = true;
         }
     };
@@ -65,7 +65,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         timer = new Timer();
         timerIsRunning = false;
         timerShouldStart = false;
-        tvTimer.setText(UtilActivity.getTimerText(solveTime));
+        tvTimer.setText(UtilActivity.getDisplayText(solveTime));
         tvScramble = view.findViewById(R.id.tvScramble);
         scramble = ScrambleGenerator.generateScramble();
         tvScramble.setText(scramble);
@@ -91,17 +91,17 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         if (view == view_timer_fragment) {
-            if(timerIsRunning){
-                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
-                    stopTimer();
-                    return true;
-                }
-            }
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                tvTimer.setTextColor(Color.RED);
-                handler.postDelayed(runnable, 500);
+                if(timerIsRunning){
+                    stopTimer();
+                }
+                else{
+                    tvTimer.setTextColor(Color.RED);
+                    handler.postDelayed(runnable, 500);
+                }
                 return true;
-            } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+            }
+            else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 tvTimer.setTextColor(Color.WHITE);
                 handler.removeCallbacks(runnable);
                 if (timerShouldStart) {
@@ -117,14 +117,15 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     private void startTimer() {
         currentSolve = new Solve(-1, MainActivity.cubeType, 0, 0, scramble, "", Calendar.getInstance().getTime().toString());
         timerTask = new TimerTask() {
-
             @Override
             public void run() {
                 ((Activity)getContext()).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        solveTime += 0.01;
-                        tvTimer.setText(UtilActivity.getTimerText(solveTime));
+                        if(timerIsRunning){
+                            solveTime += 10;
+                            tvTimer.setText(UtilActivity.getDisplayText(solveTime));
+                        }
                     }
                 });
             }
@@ -169,7 +170,8 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         sh.open();
         currentSolve = sh.createSolve(currentSolve);
         sh.close();
-        Toast.makeText(this.getContext(), "added", Toast.LENGTH_LONG).show();
+        Toast.makeText(this.getContext(), currentSolve.getSolveId()+"", Toast.LENGTH_LONG).show();
+
     }
 
     private void deleteRecentSolve(){
@@ -178,7 +180,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         sh.close();
         currentSolve = null;
         tvTimer.setText("00.00");
-        solveTime = 0.0;
+        solveTime = 0;
         Toast.makeText(this.getContext(), "deleted", Toast.LENGTH_LONG).show();
     }
 }

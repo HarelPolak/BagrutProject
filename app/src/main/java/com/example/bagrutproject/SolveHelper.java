@@ -2,6 +2,7 @@ package com.example.bagrutproject;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -14,7 +15,7 @@ public class SolveHelper extends SQLiteOpenHelper {
 
     public static final String COLUMN_ID="solveId";
     public static final String COLUMN_TYPE="cubeType";
-    public static final String COLUMN_PENALTY="cubeType";
+    public static final String COLUMN_PENALTY="penalty";
     public static final String COLUMN_TIME="time";
     public static final String COLUMN_SCRAMBLE="scramble";
     public static final String COLUMN_COMMENT="comment";
@@ -51,7 +52,7 @@ public class SolveHelper extends SQLiteOpenHelper {
     public Solve createSolve(Solve s)
     {
         ContentValues values=new ContentValues();
-        values.put(SolveHelper.COLUMN_PENALTY, s.getTime());
+        values.put(SolveHelper.COLUMN_PENALTY, s.getPenalty());
         values.put(SolveHelper.COLUMN_TIME, s.getTime());
         values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
         values.put(SolveHelper.COLUMN_COMMENT, s.getComment());
@@ -69,7 +70,7 @@ public class SolveHelper extends SQLiteOpenHelper {
     public long updateByRow(Solve s) {
         ContentValues values=new ContentValues();
         values.put(SolveHelper.COLUMN_ID, s.getSolveId());
-        values.put(SolveHelper.COLUMN_PENALTY, s.getSolveId());
+        values.put(SolveHelper.COLUMN_PENALTY, s.getPenalty());
         values.put(SolveHelper.COLUMN_TIME, s.getTime());
         values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
         values.put(SolveHelper.COLUMN_COMMENT, s.getComment());

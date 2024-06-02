@@ -6,12 +6,12 @@ public class Solve {
     private long solveId;
     private int cubeType;
     private int penalty;
-    private double time;
+    private long time;
     private String scramble;
     private String comment;
     private String date;
 
-    public Solve(long solveId, int cubeType, int penalty, double time, String scramble, String comment, String date) {
+    public Solve(long solveId, int cubeType, int penalty, long time, String scramble, String comment, String date) {
         this.solveId = solveId;
         this.cubeType = cubeType;
         this.penalty = penalty;
@@ -21,7 +21,7 @@ public class Solve {
         this.date = date;
     }
 
-    public Solve(int cubeType, int penalty, double time, String scramble, String comment, String date) {
+    public Solve(int cubeType, int penalty, long time, String scramble, String comment, String date) {
         this.solveId = solveId;
         this.cubeType = cubeType;
         this.penalty = penalty;
@@ -47,11 +47,11 @@ public class Solve {
         this.cubeType = cubeType;
     }
 
-    public double getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(double time) {
+    public void setTime(long time) {
         this.time = time;
     }
 

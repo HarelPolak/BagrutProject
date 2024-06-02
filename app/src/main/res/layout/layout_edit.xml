@@ -99,9 +99,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:text="DNF"
+            android:text="No Penalty"
             android:textSize="15dp"
-            android:id="@+id/tvDnfDialog"/>
+            android:id="@+id/tvNoDialog"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -115,9 +115,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:text="No Penalty"
+            android:text="DNF"
             android:textSize="15dp"
-            android:id="@+id/tvNoDialog"/>
+            android:id="@+id/tvDnfDialog"/>
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
