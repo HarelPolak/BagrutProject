@@ -1,6 +1,8 @@
 package com.example.bagrutproject;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -19,10 +21,10 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TimerFragment extends Fragment implements View.OnTouchListener, View.OnClickListener {
+public class TimerFragment extends Fragment implements View.OnTouchListener, View.OnClickListener, DialogInterface.OnDismissListener {
 
     View view_timer_fragment;
-    EditDialogClass editDialogClass;
+    Dialog editDialog;
     TextView tvTimer, tvScramble;
     ImageButton ibEdit, ibDelete;
     Timer timer;
@@ -154,8 +156,9 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     public void onClick(View view) {
         if(view == ibEdit){
             if(currentSolve!=null && currentSolve.getSolveId()!=-1){
-                editDialogClass = new EditDialogClass();
-                editDialogClass.showEditDialog((Activity) getContext(), currentSolve);
+                EditDialogClass editDialogClass = new EditDialogClass();
+                editDialog = editDialogClass.showEditDialog((Activity) getContext(), currentSolve);
+                editDialog.setOnDismissListener(this);
             }
         }
         else if(view == ibDelete){
@@ -182,5 +185,21 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         tvTimer.setText("00.00");
         solveTime = 0;
         Toast.makeText(this.getContext(), "deleted", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialogInterface) {
+        sh.open();
+        if(sh.getSolveById(currentSolve.getSolveId()) == null){
+            currentSolve = null;
+            tvTimer.setText("00.00");
+            solveTime = 0;
+            Toast.makeText(this.getContext(), "deleted", Toast.LENGTH_LONG).show();
+
+        }
+        else{
+            currentSolve = sh.getSolveById(currentSolve.getSolveId());
+            tvTimer.setText(UtilActivity.getDisplayPenaltyText(currentSolve.getTime(), currentSolve.getPenalty()));
+        }
     }
 }

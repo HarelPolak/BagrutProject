@@ -21,6 +21,9 @@ public class SolveHelper extends SQLiteOpenHelper {
     public static final String COLUMN_COMMENT="comment";
     public static final String COLUMN_DATE="date";
 
+    String []allColumns={SolveHelper.COLUMN_ID, SolveHelper.COLUMN_TYPE, SolveHelper.COLUMN_PENALTY,
+            SolveHelper.COLUMN_TIME, SolveHelper.COLUMN_SCRAMBLE, SolveHelper.COLUMN_COMMENT, SolveHelper.COLUMN_DATE};
+
     SQLiteDatabase database;
 
     private static final String CREATE_TABLE_SOLVE="CREATE TABLE IF NOT EXISTS " +
@@ -76,5 +79,24 @@ public class SolveHelper extends SQLiteOpenHelper {
         values.put(SolveHelper.COLUMN_COMMENT, s.getComment());
         values.put(SolveHelper.COLUMN_DATE, s.getDate());
         return database.update(SolveHelper.TABLE_SOLVE, values, SolveHelper.COLUMN_ID +"=" + s.getSolveId(), null);
+    }
+
+    public Solve getSolveById(long rowId)
+    {
+        Cursor cursor=database.query(SolveHelper.TABLE_SOLVE, allColumns, SolveHelper.COLUMN_ID + "=" +rowId, null, null, null, null);
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0)
+        {
+            long id = cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_ID));
+            int  type = cursor.getInt(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_TYPE));
+            int  penalty = cursor.getInt(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_PENALTY));
+            long time = cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_TIME));
+            String scramble = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_SCRAMBLE));
+            String comment = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_COMMENT));
+            String date = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_DATE));
+            Solve s = new Solve(id, type, penalty, time, scramble, comment, date);
+            return s;
+        }
+        return null;
     }
 }
