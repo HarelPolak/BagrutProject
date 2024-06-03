@@ -55,6 +55,7 @@ public class SolveHelper extends SQLiteOpenHelper {
     public Solve createSolve(Solve s)
     {
         ContentValues values=new ContentValues();
+        values.put(SolveHelper.COLUMN_TYPE, s.getCubeType());
         values.put(SolveHelper.COLUMN_PENALTY, s.getPenalty());
         values.put(SolveHelper.COLUMN_TIME, s.getTime());
         values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
@@ -73,6 +74,7 @@ public class SolveHelper extends SQLiteOpenHelper {
     public long updateByRow(Solve s) {
         ContentValues values=new ContentValues();
         values.put(SolveHelper.COLUMN_ID, s.getSolveId());
+        values.put(SolveHelper.COLUMN_TYPE, s.getCubeType());
         values.put(SolveHelper.COLUMN_PENALTY, s.getPenalty());
         values.put(SolveHelper.COLUMN_TIME, s.getTime());
         values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
@@ -81,8 +83,7 @@ public class SolveHelper extends SQLiteOpenHelper {
         return database.update(SolveHelper.TABLE_SOLVE, values, SolveHelper.COLUMN_ID +"=" + s.getSolveId(), null);
     }
 
-    public Solve getSolveById(long rowId)
-    {
+    public Solve getSolveById(long rowId) {
         Cursor cursor=database.query(SolveHelper.TABLE_SOLVE, allColumns, SolveHelper.COLUMN_ID + "=" +rowId, null, null, null, null);
         cursor.moveToFirst();
         if(cursor.getCount() > 0)
@@ -98,5 +99,24 @@ public class SolveHelper extends SQLiteOpenHelper {
             return s;
         }
         return null;
+    }
+
+    public Solve getBestSolve(int cubeType) {
+        String selection = SolveHelper.COLUMN_TYPE + " = " + cubeType;
+        String orderBy = SolveHelper.COLUMN_TIME + " ASC"; // ASC for ascending order (lowest first)
+        Cursor cursor = database.query(SolveHelper.TABLE_SOLVE, allColumns, selection, null, null, null, orderBy);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            long id = cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_ID));
+            int type = cursor.getInt(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_TYPE));
+            int penalty = cursor.getInt(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_PENALTY));
+            long time = cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_TIME));
+            String scramble = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_SCRAMBLE));
+            String comment = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_COMMENT));
+            String date = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_DATE));
+            Solve bestSolve = new Solve(id, type, penalty, time, scramble, comment, date);
+            return bestSolve;
+        }
+        return null; // No solve found for the cube type
     }
 }

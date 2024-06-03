@@ -117,7 +117,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     }
 
     private void startTimer() {
-        currentSolve = new Solve(-1, MainActivity.cubeType, 0, 0, scramble, "", Calendar.getInstance().getTime().toString());
+        currentSolve = new Solve(-1, MainActivity.cubeType, 0, 0, scramble, "", UtilActivity.getTodaysDate());
         timerTask = new TimerTask() {
             @Override
             public void run() {

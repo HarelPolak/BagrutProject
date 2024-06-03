@@ -1,5 +1,9 @@
 package com.example.bagrutproject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class UtilActivity {
 
     public static String getDisplayText(long solveTime) {
@@ -24,6 +28,14 @@ public class UtilActivity {
             return "DNF";
         }
         return null;
+    }
+
+    public static String getTodaysDate(){
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = cal.getTime();
+        String formattedDate = formatter.format(date);
+        return formattedDate;
     }
 
 }
