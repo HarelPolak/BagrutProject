@@ -83,6 +83,14 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     }
 
     @Override
+    public void onStart() {
+        if(currentSolve != null){
+            tvTimer.setText(UtilActivity.getDisplayPenaltyText(currentSolve.getTime(), currentSolve.getPenalty()));
+        }
+        super.onStart();
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         if(timerIsRunning){
@@ -144,12 +152,15 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     }
 
     public void refresh(){
-        if(timerIsRunning)
-            stopTimer();
-        else{
-            scramble = ScrambleGenerator.generateScramble();
-            tvScramble.setText(scramble);
+        if(timerIsRunning){
+            timerTask.cancel();
+            timerIsRunning = false;
         }
+        scramble = ScrambleGenerator.generateScramble();
+        tvScramble.setText(scramble);
+        tvTimer.setText("00.00");
+        solveTime = 0;
+        currentSolve = null;
     }
 
     @Override
@@ -173,7 +184,6 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         sh.open();
         currentSolve = sh.createSolve(currentSolve);
         sh.close();
-        Toast.makeText(this.getContext(), currentSolve.getSolveId()+"", Toast.LENGTH_LONG).show();
 
     }
 
@@ -194,8 +204,6 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
             currentSolve = null;
             tvTimer.setText("00.00");
             solveTime = 0;
-            Toast.makeText(this.getContext(), "deleted", Toast.LENGTH_LONG).show();
-
         }
         else{
             currentSolve = sh.getSolveById(currentSolve.getSolveId());

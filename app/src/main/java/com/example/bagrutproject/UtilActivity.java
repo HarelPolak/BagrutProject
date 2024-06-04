@@ -37,5 +37,4 @@ public class UtilActivity {
         String formattedDate = formatter.format(date);
         return formattedDate;
     }
-
 }

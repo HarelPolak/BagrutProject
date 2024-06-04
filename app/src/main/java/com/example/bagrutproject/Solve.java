@@ -87,4 +87,10 @@ public class Solve {
         this.date = date;
     }
 
+    public long getPenaltyTime(){
+        if(penalty == 1)
+            return time + 2000;
+        return time;
+    }
+
 }
