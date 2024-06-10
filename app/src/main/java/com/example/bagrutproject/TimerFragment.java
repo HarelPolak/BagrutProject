@@ -85,7 +85,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     @Override
     public void onStart() {
         if(currentSolve != null){
-            tvTimer.setText(UtilActivity.getDisplayPenaltyText(currentSolve.getTime(), currentSolve.getPenalty()));
+            tvTimer.setText(currentSolve.getDisplayPenaltyText());
         }
         super.onStart();
     }
@@ -207,7 +207,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         }
         else{
             currentSolve = sh.getSolveById(currentSolve.getSolveId());
-            tvTimer.setText(UtilActivity.getDisplayPenaltyText(currentSolve.getTime(), currentSolve.getPenalty()));
+            tvTimer.setText(currentSolve.getDisplayPenaltyText());
         }
     }
 }

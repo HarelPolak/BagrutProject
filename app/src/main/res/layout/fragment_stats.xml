@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0080FF"
-    tools:context=".StatsFragment">
+    tools:context=".StatsFragment"
+    android:orientation="vertical">
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -102,5 +103,11 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 </LinearLayout>

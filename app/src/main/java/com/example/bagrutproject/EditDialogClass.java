@@ -51,7 +51,7 @@ public class EditDialogClass implements View.OnClickListener {
         ibDelete = d.findViewById(R.id.ibDeleteDialog);
         ibDelete.setOnClickListener(this);
 
-        tvTime.setText(UtilActivity.getDisplayPenaltyText(s.getTime(), s.getPenalty()));
+        tvTime.setText(s.getDisplayPenaltyText());
         if(s.getCubeType() == 0)
             tvType.setText("2x2");
         else if(s.getCubeType() == 1)
@@ -79,25 +79,25 @@ public class EditDialogClass implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if(view == tvNo){
-            tvTime.setText(UtilActivity.getDisplayPenaltyText(s.getTime(), 0));
+            s.setPenalty(0);
+            tvTime.setText(s.getDisplayPenaltyText());
             tvPlus2.setTextColor(Color.BLACK);
             tvDnf.setTextColor(Color.BLACK);
             tvNo.setTextColor(Color.BLUE);
-            s.setPenalty(0);
         }
         else if(view == tvPlus2){
-            tvTime.setText(UtilActivity.getDisplayPenaltyText(s.getTime(), 1));
+            s.setPenalty(1);
+            tvTime.setText(s.getDisplayPenaltyText());
             tvNo.setTextColor(Color.BLACK);
             tvDnf.setTextColor(Color.BLACK);
             tvPlus2.setTextColor(Color.BLUE);
-            s.setPenalty(1);
         }
         else if(view == tvDnf){
-            tvTime.setText(UtilActivity.getDisplayPenaltyText(s.getTime(), 2));
+            s.setPenalty(2);
+            tvTime.setText(s.getDisplayPenaltyText());
             tvNo.setTextColor(Color.BLACK);
             tvPlus2.setTextColor(Color.BLACK);
             tvDnf.setTextColor(Color.BLUE);
-            s.setPenalty(2);
         }
         else if(view == ibDelete){
             sh.open();

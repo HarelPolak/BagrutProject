@@ -93,4 +93,17 @@ public class Solve {
         return time;
     }
 
+    public String getDisplayPenaltyText(){
+        if(penalty == 0){
+            return UtilActivity.getDisplayText(time);
+        }
+        if(penalty == 1){
+            return UtilActivity.getDisplayText(time+2000)+"+";
+        }
+        if(penalty == 2){
+            return "DNF";
+        }
+        return null;
+    }
+
 }

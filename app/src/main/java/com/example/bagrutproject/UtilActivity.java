@@ -15,21 +15,6 @@ public class UtilActivity {
             return String.format("%02d", seconds) + "." + String.format("%02d", milliseconds);
         return String.format("%02d", minutes) + ":" + String.format("%02d", seconds) + "." + String.format("%02d", milliseconds);
     }
-
-    public static String getDisplayPenaltyText(long solveTime, int penalty){
-        if(penalty == 0){
-            return getDisplayText(solveTime);
-        }
-        if(penalty == 1){
-            solveTime+=2000;
-            return getDisplayText(solveTime)+"+";
-        }
-        if(penalty == 2){
-            return "DNF";
-        }
-        return null;
-    }
-
     public static String getTodaysDate(){
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
