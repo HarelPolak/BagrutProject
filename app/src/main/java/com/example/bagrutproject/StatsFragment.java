@@ -2,7 +2,6 @@ package com.example.bagrutproject;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,17 +14,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class StatsFragment extends Fragment {
+public class StatsFragment extends Fragment implements OnItemClickListener{
 
     SolveHelper sh;
-    RecyclerView recyclerView;
-    ListAdapter adapter;
-    private ArrayList<String> dataList;
-
     TextView tvBestSingle, tvBestAvg5, tvBestAvg12, tvTotalAvg;
     Solve bestSingle;
+    List<Solve> solves;
+    Dialog editDialog;
     long totalAvg;
 
     public StatsFragment(){
@@ -40,33 +37,14 @@ public class StatsFragment extends Fragment {
         sh.open();
         bestSingle = sh.getBestSolve(MainActivity.cubeType);
         totalAvg = sh.getTotalAvg(MainActivity.cubeType);
+        solves = sh.getAllSolvesByType(MainActivity.cubeType);
         sh.close();
 
-        dataList = new ArrayList<>();
-        dataList.add("Item 1");
-        dataList.add("Item 2");
-        dataList.add("Item 1");
-        dataList.add("Item 2");
-        dataList.add("Item 1");
-        dataList.add("Item 2");
-        dataList.add("Item 1");
-        dataList.add("Item 2");
-        dataList.add("Item 1");
-        dataList.add("Item 2");
-        dataList.add("Item 1");
-        dataList.add("Item 2");
-        dataList.add("Item 1");
-        dataList.add("Item 2");
-        dataList.add("Item 1");
-        dataList.add("Item 2");
-        dataList.add("Item 1");
-        dataList.add("Item 2");
-        dataList.add("Item 1");
-        dataList.add("Item 2");
-        recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new ListAdapter(dataList);
-        recyclerView.setAdapter(adapter);
+        RecyclerView solveRecyclerView = view.findViewById(R.id.solveRecyclerView);
+        solveRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        SolveAdapter adapter = new SolveAdapter(solves, this);
+        solveRecyclerView.setAdapter(adapter);
 
         tvBestSingle = view.findViewById(R.id.tvBestSingle);
         tvBestAvg5 = view.findViewById(R.id.tvBestAvg5);
@@ -80,5 +58,11 @@ public class StatsFragment extends Fragment {
             tvTotalAvg.setText(UtilActivity.getDisplayText(totalAvg));
 
         return view;
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        EditDialogClass editDialogClass = new EditDialogClass();
+        editDialog = editDialogClass.showEditDialog((Activity) getContext(), solves.get(position));
     }
 }

@@ -8,28 +8,30 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class SolveHelper extends SQLiteOpenHelper {
-    public static final String DATABASENAME="solve.db";
-    public static final String TABLE_SOLVE="tblsolve";
-    public static final int DATABASEVERSION=1;
+    public static final String DATABASENAME = "solve.db";
+    public static final String TABLE_SOLVE = "tblsolve";
+    public static final int DATABASEVERSION = 1;
 
-    public static final String COLUMN_ID="solveId";
-    public static final String COLUMN_TYPE="cubeType";
-    public static final String COLUMN_PENALTY="penalty";
-    public static final String COLUMN_TIME="time";
-    public static final String COLUMN_SCRAMBLE="scramble";
-    public static final String COLUMN_COMMENT="comment";
-    public static final String COLUMN_DATE="date";
-    public static final String COLUMN_PENALTY_TIME="penaltyTime";
+    public static final String COLUMN_ID = "solveId";
+    public static final String COLUMN_TYPE = "cubeType";
+    public static final String COLUMN_PENALTY = "penalty";
+    public static final String COLUMN_TIME = "time";
+    public static final String COLUMN_SCRAMBLE = "scramble";
+    public static final String COLUMN_COMMENT = "comment";
+    public static final String COLUMN_DATE = "date";
+    public static final String COLUMN_PENALTY_TIME = "penaltyTime";
 
-    String []allColumns={SolveHelper.COLUMN_ID, SolveHelper.COLUMN_TYPE, SolveHelper.COLUMN_PENALTY,
+    String[] allColumns = {SolveHelper.COLUMN_ID, SolveHelper.COLUMN_TYPE, SolveHelper.COLUMN_PENALTY,
             SolveHelper.COLUMN_TIME, SolveHelper.COLUMN_SCRAMBLE, SolveHelper.COLUMN_COMMENT, SolveHelper.COLUMN_DATE, SolveHelper.COLUMN_PENALTY_TIME};
 
     SQLiteDatabase database;
 
-    private static final String CREATE_TABLE_SOLVE="CREATE TABLE IF NOT EXISTS " +
-            TABLE_SOLVE + "(" + COLUMN_ID +  " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_TYPE + " INTEGER," + COLUMN_PENALTY + " INTEGER," + COLUMN_TIME + " REAL," + COLUMN_SCRAMBLE + " VARCHAR,"
-            + COLUMN_COMMENT +" VARCHAR," + COLUMN_DATE +   " VARCHAR,"  + COLUMN_PENALTY_TIME + " INTEGER " + ");";
+    private static final String CREATE_TABLE_SOLVE = "CREATE TABLE IF NOT EXISTS " +
+            TABLE_SOLVE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_TYPE + " INTEGER," + COLUMN_PENALTY + " INTEGER," + COLUMN_TIME + " REAL," + COLUMN_SCRAMBLE + " VARCHAR,"
+            + COLUMN_COMMENT + " VARCHAR," + COLUMN_DATE + " VARCHAR," + COLUMN_PENALTY_TIME + " INTEGER " + ");";
 
 
     public SolveHelper(Context context) {
@@ -48,14 +50,12 @@ public class SolveHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void open()
-    {
-        database=this.getWritableDatabase();
+    public void open() {
+        database = this.getWritableDatabase();
     }
 
-    public Solve createSolve(Solve s)
-    {
-        ContentValues values=new ContentValues();
+    public Solve createSolve(Solve s) {
+        ContentValues values = new ContentValues();
         values.put(SolveHelper.COLUMN_TYPE, s.getCubeType());
         values.put(SolveHelper.COLUMN_PENALTY, s.getPenalty());
         values.put(SolveHelper.COLUMN_TIME, s.getTime());
@@ -64,7 +64,7 @@ public class SolveHelper extends SQLiteOpenHelper {
         values.put(SolveHelper.COLUMN_DATE, s.getDate());
         values.put(SolveHelper.COLUMN_PENALTY_TIME, s.getPenaltyTime());
 
-        long insertId=database.insert(SolveHelper.TABLE_SOLVE, null, values);
+        long insertId = database.insert(SolveHelper.TABLE_SOLVE, null, values);
         s.setSolveId(insertId);
         return s;
     }
@@ -74,7 +74,7 @@ public class SolveHelper extends SQLiteOpenHelper {
     }
 
     public long updateByRow(Solve s) {
-        ContentValues values=new ContentValues();
+        ContentValues values = new ContentValues();
         values.put(SolveHelper.COLUMN_ID, s.getSolveId());
         values.put(SolveHelper.COLUMN_TYPE, s.getCubeType());
         values.put(SolveHelper.COLUMN_PENALTY, s.getPenalty());
@@ -83,17 +83,16 @@ public class SolveHelper extends SQLiteOpenHelper {
         values.put(SolveHelper.COLUMN_COMMENT, s.getComment());
         values.put(SolveHelper.COLUMN_DATE, s.getDate());
         values.put(SolveHelper.COLUMN_PENALTY_TIME, s.getPenaltyTime());
-        return database.update(SolveHelper.TABLE_SOLVE, values, SolveHelper.COLUMN_ID +"=" + s.getSolveId(), null);
+        return database.update(SolveHelper.TABLE_SOLVE, values, SolveHelper.COLUMN_ID + "=" + s.getSolveId(), null);
     }
 
     public Solve getSolveById(long rowId) {
-        Cursor cursor=database.query(SolveHelper.TABLE_SOLVE, allColumns, SolveHelper.COLUMN_ID + "=" +rowId, null, null, null, null);
+        Cursor cursor = database.query(SolveHelper.TABLE_SOLVE, allColumns, SolveHelper.COLUMN_ID + "=" + rowId, null, null, null, null);
         cursor.moveToFirst();
-        if(cursor.getCount() > 0)
-        {
+        if (cursor.getCount() > 0) {
             long id = cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_ID));
-            int  type = cursor.getInt(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_TYPE));
-            int  penalty = cursor.getInt(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_PENALTY));
+            int type = cursor.getInt(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_TYPE));
+            int penalty = cursor.getInt(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_PENALTY));
             long time = cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_TIME));
             String scramble = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_SCRAMBLE));
             String comment = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_COMMENT));
@@ -103,6 +102,33 @@ public class SolveHelper extends SQLiteOpenHelper {
         }
         return null;
     }
+
+    public ArrayList<Solve> getAllSolvesByType(int cubeType) {
+        String selection = SolveHelper.COLUMN_TYPE + " = " + cubeType;
+        Cursor cursor = database.query(SolveHelper.TABLE_SOLVE, allColumns, selection, null, null, null, null);
+        ArrayList<Solve> solves = convertCursorToList(cursor);
+        return solves;
+    }
+
+    private ArrayList<Solve> convertCursorToList(Cursor cursor) {
+        ArrayList<Solve> solves = new ArrayList<Solve>();
+        if(cursor.getCount() > 0) {
+            while(cursor.moveToNext()) {
+                long id = cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_ID));
+                int type = cursor.getInt(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_TYPE));
+                int penalty = cursor.getInt(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_PENALTY));
+                long time = cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_TIME));
+                String scramble = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_SCRAMBLE));
+                String comment = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_COMMENT));
+                String date = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_DATE));
+                Solve s = new Solve(id, type, penalty, time, scramble, comment, date);
+                solves.add(s);
+            }
+        }
+        return solves;
+    }
+
+
 
     public Solve getBestSolve(int cubeType) {
         String selection = SolveHelper.COLUMN_TYPE + " = " + cubeType + " AND " + SolveHelper.COLUMN_PENALTY + " != 2";
