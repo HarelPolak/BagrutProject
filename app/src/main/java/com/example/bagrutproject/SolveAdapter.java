@@ -44,4 +44,10 @@ public class SolveAdapter extends RecyclerView.Adapter<SolveViewHolder> {
     public int getItemCount() {
         return solves.size();
     }
+
+    public void updateData(List<Solve> newSolves) {
+        this.solves.clear();
+        this.solves.addAll(newSolves);
+        notifyDataSetChanged();
+    }
 }

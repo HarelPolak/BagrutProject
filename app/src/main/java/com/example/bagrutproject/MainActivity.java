@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     BottomNavigationView bottomNavigationView;
     public static int cubeType;
+    StudyFragment studyFragment = new StudyFragment();
+    TimerFragment timerFragment = new TimerFragment();
+    StatsFragment statsFragment = new StatsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +38,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         SharedPreferences sharedPreferences = getSharedPreferences("sp",MODE_PRIVATE);
         cubeType = sharedPreferences.getInt("cubeType", 0);
     }
-    StudyFragment studyFragment = new StudyFragment();
-    TimerFragment timerFragment = new TimerFragment();
-    StatsFragment statsFragment = new StatsFragment();
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
