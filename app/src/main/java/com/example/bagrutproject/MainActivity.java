@@ -103,6 +103,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if(bottomNavigationView.getSelectedItemId() == R.id.timer){
             timerFragment.refresh();
         }
+        else if(bottomNavigationView.getSelectedItemId() == R.id.stats){
+            statsFragment.updateData();
+        }
     }
 
     @Override

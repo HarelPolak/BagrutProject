@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class StatsFragment extends Fragment implements OnItemClickListener, DialogInterface.OnDismissListener {
+public class StatsFragment extends Fragment implements OnItemClickListener, OnItemLongClickListener ,DialogInterface.OnDismissListener {
 
     SolveHelper sh;
     TextView tvBestSingle, tvBestAvg5, tvBestAvg12, tvTotalAvg;
@@ -45,7 +45,7 @@ public class StatsFragment extends Fragment implements OnItemClickListener, Dial
 
         RecyclerView solveRecyclerView = view.findViewById(R.id.solveRecyclerView);
         solveRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new SolveAdapter(solves, this);
+        adapter = new SolveAdapter(solves, this, this);
         solveRecyclerView.setAdapter(adapter);
 
         tvBestSingle = view.findViewById(R.id.tvBestSingle);
@@ -70,6 +70,14 @@ public class StatsFragment extends Fragment implements OnItemClickListener, Dial
     }
 
     @Override
+    public void onItemLongClicked(int position) {
+        sh.open();
+        sh.deleteByRow(solves.get(position).getSolveId());
+        sh.close();
+        updateData();
+    }
+
+    @Override
     public void onDismiss(DialogInterface dialogInterface) {
         updateData();
     }
@@ -81,11 +89,14 @@ public class StatsFragment extends Fragment implements OnItemClickListener, Dial
         solves = sh.getAllSolvesByType(MainActivity.cubeType);
         sh.close();
         adapter.updateData(solves);
-        if(bestSingle!=null){
+        if(bestSingle!=null)
             tvBestSingle.setText(bestSingle.getDisplayPenaltyText());
-        }
+        else
+            tvBestSingle.setText("00:00.00");
         if(totalAvg != -1)
             tvTotalAvg.setText(UtilActivity.getDisplayText(totalAvg));
-    }
+        else
+            tvTotalAvg.setText("00:00.00");
 
+    }
 }

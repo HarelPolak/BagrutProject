@@ -13,10 +13,13 @@ public class SolveAdapter extends RecyclerView.Adapter<SolveViewHolder> {
 
     private List<Solve> solves;
     OnItemClickListener listener;
+    OnItemLongClickListener longClickListener;
 
-    public SolveAdapter(List<Solve> solves, OnItemClickListener listener) {
+    public SolveAdapter(List<Solve> solves, OnItemClickListener listener, OnItemLongClickListener longClickListener) {
         this.solves = solves;
         this.listener = listener;
+        this.longClickListener = longClickListener;
+
     }
 
     @Override
@@ -33,6 +36,15 @@ public class SolveAdapter extends RecyclerView.Adapter<SolveViewHolder> {
                 if (listener != null) {
                     listener.onItemClick(position);
                 }
+            }
+        });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (longClickListener != null) {
+                    longClickListener.onItemLongClicked(position);
+                }
+                return true;
             }
         });
         Solve solve = solves.get(position);

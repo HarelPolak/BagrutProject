@@ -105,7 +105,8 @@ public class SolveHelper extends SQLiteOpenHelper {
 
     public ArrayList<Solve> getAllSolvesByType(int cubeType) {
         String selection = SolveHelper.COLUMN_TYPE + " = " + cubeType;
-        Cursor cursor = database.query(SolveHelper.TABLE_SOLVE, allColumns, selection, null, null, null, null);
+        String orderBy = SolveHelper.COLUMN_ID + " DESC";
+        Cursor cursor = database.query(SolveHelper.TABLE_SOLVE, allColumns, selection, null, null, null, orderBy);
         ArrayList<Solve> solves = convertCursorToList(cursor);
         return solves;
     }

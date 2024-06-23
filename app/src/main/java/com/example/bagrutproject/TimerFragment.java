@@ -17,7 +17,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -83,11 +82,9 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     }
 
     @Override
-    public void onStart() {
-        if(currentSolve != null){
-            tvTimer.setText(currentSolve.getDisplayPenaltyText());
-        }
-        super.onStart();
+    public void onResume() {
+        updateData();
+        super.onResume();
     }
 
     @Override
@@ -163,6 +160,21 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         currentSolve = null;
     }
 
+    public void updateData(){
+        if(currentSolve != null){
+            sh.open();
+            if(sh.getSolveById(currentSolve.getSolveId()) == null){
+                currentSolve = null;
+                tvTimer.setText("00.00");
+                solveTime = 0;
+            }
+            else{
+                currentSolve = sh.getSolveById(currentSolve.getSolveId());
+                tvTimer.setText(currentSolve.getDisplayPenaltyText());
+            }
+        }
+    }
+
     @Override
     public void onClick(View view) {
         if(view == ibEdit){
@@ -199,15 +211,6 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
 
     @Override
     public void onDismiss(DialogInterface dialogInterface) {
-        sh.open();
-        if(sh.getSolveById(currentSolve.getSolveId()) == null){
-            currentSolve = null;
-            tvTimer.setText("00.00");
-            solveTime = 0;
-        }
-        else{
-            currentSolve = sh.getSolveById(currentSolve.getSolveId());
-            tvTimer.setText(currentSolve.getDisplayPenaltyText());
-        }
+        updateData();
     }
 }
