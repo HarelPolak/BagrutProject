@@ -88,7 +88,7 @@ public class Solve {
     }
 
     public long getPenaltyTime(){
-        if(penalty == 1)
+        if (penalty == 1)
             return time + 2000;
         return time;
     }

@@ -38,10 +38,10 @@ public class StatsFragment extends Fragment implements OnItemClickListener, OnIt
         View view = inflater.inflate(R.layout.fragment_stats, container, false);
         sh = new SolveHelper(getContext());
         sh.open();
-        bestSingle = sh.getBestSolve(MainActivity.cubeType);
-        totalAvg = sh.getTotalAvg(MainActivity.cubeType);
         solves = sh.getAllSolvesByType(MainActivity.cubeType);
         sh.close();
+        bestSingle = UtilActivity.getBestSolve(solves);
+        totalAvg = UtilActivity.getTotalAverage(solves);
 
         RecyclerView solveRecyclerView = view.findViewById(R.id.solveRecyclerView);
         solveRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -84,10 +84,10 @@ public class StatsFragment extends Fragment implements OnItemClickListener, OnIt
 
     public void updateData(){
         sh.open();
-        bestSingle = sh.getBestSolve(MainActivity.cubeType);
-        totalAvg = sh.getTotalAvg(MainActivity.cubeType);
         solves = sh.getAllSolvesByType(MainActivity.cubeType);
         sh.close();
+        bestSingle = UtilActivity.getBestSolve(solves);
+        totalAvg = UtilActivity.getTotalAverage(solves);
         adapter.updateData(solves);
         if(bestSingle!=null)
             tvBestSingle.setText(bestSingle.getDisplayPenaltyText());

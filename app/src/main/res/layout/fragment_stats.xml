@@ -8,101 +8,146 @@
     android:background="#0080FF"
     tools:context=".StatsFragment"
     android:orientation="vertical">
-    
-    <LinearLayout
+
+    <TableLayout
+        android:id="@+id/table_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_margin="10dp"
+        android:background="@drawable/curved_border">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@drawable/curved_border"
-            android:layout_margin="5dp">
+        <TableRow
+            android:layout_width="match_parent">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Single"
-                android:textSize="15dp"/>
+                android:layout_weight="1"
+                android:text=""
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="current"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="best"
+                android:gravity="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="single"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tvCurrentSingle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00:00.00"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/tvBestSingle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="00:00.00"
-                android:textSize="20dp"/>
-        </LinearLayout>
+                android:gravity="center" />
+        </TableRow>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@drawable/curved_border"
-            android:layout_margin="5dp">
+        <TableRow
+            android:layout_width="match_parent">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="5 avg"
-                android:textSize="15dp"/>
+                android:layout_weight="1"
+                android:text="avg5"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tvCurrentAvg5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00:00.00"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/tvBestAvg5"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="00:00.00"
-                android:textSize="20dp"/>
-        </LinearLayout>
+                android:gravity="center" />
+        </TableRow>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@drawable/curved_border"
-            android:layout_margin="5dp">
+        <TableRow
+            android:layout_width="match_parent">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="12 avg"
-                android:textSize="15dp"/>
+                android:layout_weight="1"
+                android:text="avg12"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tvCurrentAvg12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00:00.00"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/tvBestAvg12"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="00:00.00"
-                android:textSize="20dp"/>
-        </LinearLayout>
+                android:gravity="center" />
+        </TableRow>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@drawable/curved_border"
-            android:layout_margin="5dp">
+        <TableRow
+            android:layout_width="match_parent">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="total avg"
-                android:textSize="15dp"/>
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/tvTotalAvg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="00:00.00"
-                android:textSize="20dp"/>
-        </LinearLayout>
+                android:gravity="center" />
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""
+                android:gravity="center" />
+        </TableRow>
+    </TableLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/solveRecyclerView"

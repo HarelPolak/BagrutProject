@@ -22,16 +22,15 @@ public class SolveHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SCRAMBLE = "scramble";
     public static final String COLUMN_COMMENT = "comment";
     public static final String COLUMN_DATE = "date";
-    public static final String COLUMN_PENALTY_TIME = "penaltyTime";
 
     String[] allColumns = {SolveHelper.COLUMN_ID, SolveHelper.COLUMN_TYPE, SolveHelper.COLUMN_PENALTY,
-            SolveHelper.COLUMN_TIME, SolveHelper.COLUMN_SCRAMBLE, SolveHelper.COLUMN_COMMENT, SolveHelper.COLUMN_DATE, SolveHelper.COLUMN_PENALTY_TIME};
+            SolveHelper.COLUMN_TIME, SolveHelper.COLUMN_SCRAMBLE, SolveHelper.COLUMN_COMMENT, SolveHelper.COLUMN_DATE};
 
     SQLiteDatabase database;
 
     private static final String CREATE_TABLE_SOLVE = "CREATE TABLE IF NOT EXISTS " +
             TABLE_SOLVE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_TYPE + " INTEGER," + COLUMN_PENALTY + " INTEGER," + COLUMN_TIME + " REAL," + COLUMN_SCRAMBLE + " VARCHAR,"
-            + COLUMN_COMMENT + " VARCHAR," + COLUMN_DATE + " VARCHAR," + COLUMN_PENALTY_TIME + " INTEGER " + ");";
+            + COLUMN_COMMENT + " VARCHAR," + COLUMN_DATE + " VARCHAR," + ");";
 
 
     public SolveHelper(Context context) {
@@ -62,7 +61,6 @@ public class SolveHelper extends SQLiteOpenHelper {
         values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
         values.put(SolveHelper.COLUMN_COMMENT, s.getComment());
         values.put(SolveHelper.COLUMN_DATE, s.getDate());
-        values.put(SolveHelper.COLUMN_PENALTY_TIME, s.getPenaltyTime());
 
         long insertId = database.insert(SolveHelper.TABLE_SOLVE, null, values);
         s.setSolveId(insertId);
@@ -82,7 +80,6 @@ public class SolveHelper extends SQLiteOpenHelper {
         values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
         values.put(SolveHelper.COLUMN_COMMENT, s.getComment());
         values.put(SolveHelper.COLUMN_DATE, s.getDate());
-        values.put(SolveHelper.COLUMN_PENALTY_TIME, s.getPenaltyTime());
         return database.update(SolveHelper.TABLE_SOLVE, values, SolveHelper.COLUMN_ID + "=" + s.getSolveId(), null);
     }
 
@@ -127,42 +124,5 @@ public class SolveHelper extends SQLiteOpenHelper {
             }
         }
         return solves;
-    }
-
-
-
-    public Solve getBestSolve(int cubeType) {
-        String selection = SolveHelper.COLUMN_TYPE + " = " + cubeType + " AND " + SolveHelper.COLUMN_PENALTY + " != 2";
-        String orderBy = SolveHelper.COLUMN_PENALTY_TIME + " ASC";
-        Cursor cursor = database.query(SolveHelper.TABLE_SOLVE, allColumns, selection, null, null, null, orderBy);
-        if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
-            long id = cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_ID));
-            int type = cursor.getInt(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_TYPE));
-            int penalty = cursor.getInt(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_PENALTY));
-            long time = cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_TIME));
-            String scramble = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_SCRAMBLE));
-            String comment = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_COMMENT));
-            String date = cursor.getString(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_DATE));
-            Solve bestSolve = new Solve(id, type, penalty, time, scramble, comment, date);
-            return bestSolve;
-        }
-        return null;
-    }
-
-    public long getTotalAvg(int cubeType) {
-        String selection = SolveHelper.COLUMN_TYPE + " = " + cubeType + " AND " + SolveHelper.COLUMN_PENALTY + " != 2";
-        Cursor cursor = database.query(SolveHelper.TABLE_SOLVE, allColumns, selection, null, null, null, null);
-        long sum = 0;
-        int count = cursor.getCount();
-        if (count == 0)
-            return -1;
-        cursor.moveToFirst();
-        while (!cursor.isLast()) {
-            sum += cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_PENALTY_TIME));
-            cursor.moveToNext();
-        }
-        sum += cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_PENALTY_TIME));
-        return sum/count;
     }
 }
