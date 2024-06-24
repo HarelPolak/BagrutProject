@@ -104,7 +104,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
                 }
                 else{
                     tvTimer.setTextColor(Color.RED);
-                    handler.postDelayed(runnable, 500);
+                    handler.postDelayed(runnable, 300);
                 }
                 return true;
             }
