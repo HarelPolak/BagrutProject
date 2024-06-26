@@ -1,7 +1,11 @@
 package com.example.bagrutproject;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
@@ -17,6 +21,7 @@ public class StudyFragment extends Fragment {
     TabLayout tabLayout;
     ViewPager2 viewPager2;
     ViewPagerAdapter viewPagerAdapter;
+    int selectedTabPosition;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,7 +33,12 @@ public class StudyFragment extends Fragment {
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager2.setCurrentItem(tab.getPosition());
+                selectedTabPosition = tab.getPosition();
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("sp", MODE_PRIVATE);
+                SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                myEdit.putInt("selectedTab", selectedTabPosition);
+                myEdit.apply();
+                viewPager2.setCurrentItem(selectedTabPosition);
             }
 
             @Override
@@ -50,6 +60,9 @@ public class StudyFragment extends Fragment {
             }
         });
 
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("sp", MODE_PRIVATE);
+        selectedTabPosition = sharedPreferences.getInt("selectedTab", 0);
+        tabLayout.getTabAt(selectedTabPosition).select();
         return view;
     }
 }

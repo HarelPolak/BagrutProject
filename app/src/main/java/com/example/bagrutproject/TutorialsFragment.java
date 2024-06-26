@@ -1,5 +1,6 @@
 package com.example.bagrutproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,8 +15,8 @@ import android.widget.Toast;
 public class TutorialsFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     ListView listView;
-    String[] textArr = {"2x2", "3x3", "4x4"};
-    int[] imageArr = {R.drawable.rubiks_cube, R.drawable.rubiks_cube, R.drawable.rubiks_cube};
+    String[] textArr = {"How to Read Notations","2x2 Beginner Method", "3x3 Beginner Method", "3x3 CFOP Method", "4x4 Beginner Method"};
+    int[] imageArr = {R.drawable.notations, R.drawable.two_by_two, R.drawable.three_by_three, R.drawable.three_by_three, R.drawable.four_by_four};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,14 +30,8 @@ public class TutorialsFragment extends Fragment implements AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        if(i == 0){
-            Toast.makeText(this.getContext(), "2x2", Toast.LENGTH_LONG).show();
-        }
-        else if(i == 1){
-            Toast.makeText(this.getContext(), "3x3", Toast.LENGTH_LONG).show();
-        }
-        if(i == 2){
-            Toast.makeText(this.getContext(), "4x4", Toast.LENGTH_LONG).show();
-        }
+        Intent intent = new Intent(getActivity(), TutorialsActivity.class);
+        intent.putExtra("index", i);
+        startActivity(intent);
     }
 }

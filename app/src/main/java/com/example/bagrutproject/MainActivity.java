@@ -83,11 +83,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
         }
-        else if(item.getItemId() == R.id.share){
-            Toast.makeText(this, "Share", Toast.LENGTH_LONG).show();
-        }
         else if(item.getItemId() == R.id.about){
-            Toast.makeText(this, "About", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

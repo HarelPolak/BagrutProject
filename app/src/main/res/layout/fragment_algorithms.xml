@@ -7,11 +7,11 @@
     android:background="#0080FF"
     >
 
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Algorithms"
-        android:gravity="center"
-        android:textSize="30dp"/>
+        android:id="@+id/listView"
+        android:divider="@color/black"
+        android:dividerHeight="1dp"/>
 
 </FrameLayout>
