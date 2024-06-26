@@ -28,11 +28,9 @@ public class UtilActivity {
     }
 
     public static Solve getCurrentSolve(List<Solve> solves){
-        Solve s;
-        for(int i=0; i<solves.size(); i++){
-            s = solves.get(i);
-            if(s.getPenalty() != 2)
-                return s;
+        if(solves.size()!=0){
+            if(solves.get(0).getPenalty()!=2)
+                return solves.get(0);
         }
         return null;
     }

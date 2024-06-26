@@ -44,10 +44,6 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         }
     };
 
-    public TimerFragment() {
-        // require a empty public constructor
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment

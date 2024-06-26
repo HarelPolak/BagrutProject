@@ -29,9 +29,6 @@ public class StatsFragment extends Fragment implements OnItemClickListener, OnIt
     SolveAdapter adapter;
     long totalAvg, currentAvg5, bestAvg5, currentAvg12, bestAvg12;
 
-    public StatsFragment(){
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
