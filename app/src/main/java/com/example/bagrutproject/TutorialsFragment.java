@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class TutorialsFragment extends Fragment implements AdapterView.OnItemClickListener {
 
@@ -30,8 +29,9 @@ public class TutorialsFragment extends Fragment implements AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent intent = new Intent(getActivity(), TutorialsActivity.class);
-        intent.putExtra("index", i);
+        Intent intent = new Intent(getActivity(), StudyActivity.class);
+        intent.putExtra("itemIndex", i);
+        intent.putExtra("tabIndex", 0);
         startActivity(intent);
     }
 }

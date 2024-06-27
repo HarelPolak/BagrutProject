@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spinner_list_item_array" >
-        <item> 2x2 </item>
-        <item> 3x3 </item>
-        <item> 4x4 </item>
+        <item>2x2</item>
+        <item>3x3</item>
+        <item>4x4</item>
+    </string-array>
+
+    <string-array name="theme_entries" >
+        <item>Classic</item>
+        <item>Dark</item>
+        <item>Light</item>
+    </string-array>
+
+    <string-array name="theme_values" >
+        <item>classic</item>
+        <item>dark</item>
+        <item>light</item>
     </string-array>
 </resources>

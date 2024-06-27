@@ -98,10 +98,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         myEdit.putInt("cubeType", i);
         myEdit.commit();
         //0:2x2, 1:3x3, 2:4x4
-        if(bottomNavigationView.getSelectedItemId() == R.id.timer){
-            timerFragment.refresh();
-        }
-        else if(bottomNavigationView.getSelectedItemId() == R.id.stats){
+        timerFragment.refresh();
+        if(bottomNavigationView.getSelectedItemId() == R.id.stats){
             statsFragment.updateData();
         }
     }

@@ -7,12 +7,9 @@
     android:background="#4CAF50"
     tools:context=".SettingsActivity">
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/flFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Settings Activity"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_gravity="center"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

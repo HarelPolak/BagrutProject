@@ -19,7 +19,7 @@
             android:name=".AlgorithmsActivity"
             android:exported="false" />
         <activity
-            android:name=".TutorialsActivity"
+            android:name=".StudyActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"

@@ -22,15 +22,16 @@ public class SolveHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SCRAMBLE = "scramble";
     public static final String COLUMN_COMMENT = "comment";
     public static final String COLUMN_DATE = "date";
+    public static final String COLUMN_PENALTY_TIME = "penaltyTime";
 
     String[] allColumns = {SolveHelper.COLUMN_ID, SolveHelper.COLUMN_TYPE, SolveHelper.COLUMN_PENALTY,
-            SolveHelper.COLUMN_TIME, SolveHelper.COLUMN_SCRAMBLE, SolveHelper.COLUMN_COMMENT, SolveHelper.COLUMN_DATE};
+            SolveHelper.COLUMN_TIME, SolveHelper.COLUMN_SCRAMBLE, SolveHelper.COLUMN_COMMENT, SolveHelper.COLUMN_DATE, SolveHelper.COLUMN_PENALTY_TIME};
 
     SQLiteDatabase database;
 
     private static final String CREATE_TABLE_SOLVE = "CREATE TABLE IF NOT EXISTS " +
-            TABLE_SOLVE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_TYPE + " INTEGER," + COLUMN_PENALTY + " INTEGER," + COLUMN_TIME + " REAL," + COLUMN_SCRAMBLE + " VARCHAR,"
-            + COLUMN_COMMENT + " VARCHAR," + COLUMN_DATE + " VARCHAR," + ");";
+            TABLE_SOLVE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_TYPE + " INTEGER," + COLUMN_PENALTY + " INTEGER," + COLUMN_TIME + " BIGINT," + COLUMN_SCRAMBLE + " VARCHAR,"
+            + COLUMN_COMMENT + " VARCHAR," + COLUMN_DATE + " VARCHAR," + COLUMN_PENALTY_TIME +  " BIGINT" + ");";
 
 
     public SolveHelper(Context context) {
@@ -61,7 +62,7 @@ public class SolveHelper extends SQLiteOpenHelper {
         values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
         values.put(SolveHelper.COLUMN_COMMENT, s.getComment());
         values.put(SolveHelper.COLUMN_DATE, s.getDate());
-
+        values.put(SolveHelper.COLUMN_PENALTY_TIME, s.getPenaltyTime());
         long insertId = database.insert(SolveHelper.TABLE_SOLVE, null, values);
         s.setSolveId(insertId);
         return s;
@@ -80,6 +81,7 @@ public class SolveHelper extends SQLiteOpenHelper {
         values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
         values.put(SolveHelper.COLUMN_COMMENT, s.getComment());
         values.put(SolveHelper.COLUMN_DATE, s.getDate());
+        values.put(SolveHelper.COLUMN_PENALTY_TIME, s.getPenaltyTime());
         return database.update(SolveHelper.TABLE_SOLVE, values, SolveHelper.COLUMN_ID + "=" + s.getSolveId(), null);
     }
 
@@ -125,4 +127,20 @@ public class SolveHelper extends SQLiteOpenHelper {
         }
         return solves;
     }
+
+    public boolean isBestTime(int cubeType, long solveTime){
+        long best;
+        String selection = SolveHelper.COLUMN_TYPE + " = " + cubeType;
+        String orderBy = SolveHelper.COLUMN_PENALTY_TIME + " ASC";
+        Cursor cursor = database.query(SolveHelper.TABLE_SOLVE, allColumns, selection, null, null, null, orderBy);
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0) {
+            best = cursor.getLong(cursor.getColumnIndexOrThrow(SolveHelper.COLUMN_TIME));
+            if(solveTime < best)
+                return true;
+        }
+        return false;
+    }
+
+
 }

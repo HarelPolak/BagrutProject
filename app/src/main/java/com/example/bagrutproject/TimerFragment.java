@@ -3,10 +3,12 @@ package com.example.bagrutproject;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -31,13 +33,14 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     Solve currentSolve;
     SolveHelper sh;
     String scramble;
-    boolean timerShouldStart, timerIsRunning;
+    boolean timerShouldStart, timerIsRunning, holdToStart, changeColor, celebrate;
     long solveTime = 0;
 
     private final Handler handler = new Handler();
     private final Runnable runnable = new Runnable() {
         public void run() {
-            tvTimer.setTextColor(Color.GREEN);
+            if(changeColor)
+                tvTimer.setTextColor(Color.GREEN);
             tvTimer.setText("00.00");
             solveTime = 0;
             timerShouldStart = true;
@@ -70,6 +73,15 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        holdToStart = preferences.getBoolean("hold_to_start", true);
+        changeColor = preferences.getBoolean("change_color", true);
+        celebrate = preferences.getBoolean("celebrate", false);
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         if(timerIsRunning){
@@ -99,8 +111,16 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
                     stopTimer();
                 }
                 else{
-                    tvTimer.setTextColor(Color.RED);
-                    handler.postDelayed(runnable, 300);
+                    if(holdToStart){
+                        if(changeColor)
+                            tvTimer.setTextColor(Color.RED);
+                        handler.postDelayed(runnable, 300);
+                    }
+                    else{
+                        solveTime = 0;
+                        startTimer();
+                        timerIsRunning = true;
+                    }
                 }
                 return true;
             }
@@ -139,6 +159,13 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     private void stopTimer(){
         timerTask.cancel();
         timerIsRunning = false;
+        if(celebrate){
+            sh.open();
+            if(sh.isBestTime(MainActivity.cubeType, solveTime)){
+                Toast.makeText(this.getContext(), "new PB", Toast.LENGTH_LONG).show();
+            }
+            sh.close();
+        }
         addSolve();
         scramble = ScrambleGenerator.generateScramble();
         tvScramble.setText(scramble);

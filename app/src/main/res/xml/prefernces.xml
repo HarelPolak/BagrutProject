@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:title="Appearance"
+        android:icon="@drawable/baseline_color_lens_24">
+
+        <ListPreference
+            android:defaultValue="classic"
+            android:entries="@array/theme_entries"
+            android:entryValues="@array/theme_values"
+            android:key="theme"
+            android:title="Theme"
+            android:summary="@string/selected_theme"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="Timer"
+        android:icon="@drawable/baseline_timer_24">
+
+        <SwitchPreferenceCompat
+            app:key="hold_to_start"
+            app:title="Hold to Start"
+            app:summary="Hold the timer for 0.3 seconds to start"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            android:dependency="hold_to_start"
+            app:key="change_color"
+            app:title="Change Color"
+            app:summary="The timer will change color before it is ready to start"
+            app:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:key="celebrate"
+            app:title="Celebrate"
+            app:summary="The screen will shine when there is a new personal best"
+            app:defaultValue="false" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
