@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#673AB7</color>
-    <color name="colorPrimaryDark">#3F51B5</color>
-    <color name="colorAccent">#F44336</color>
-    <color name="green">#8BC34A</color>
-    <color name="lightBlue">#00BCD4</color>
-    <color name="red">#F43636</color>
+    <color name="darkColorPrimary">#212121</color>
+    <color name="darkColorPrimaryDark">#000000</color>
+    <color name="darkColorAccent">#CC9B0A</color>
+    <color name="darkListBackground">#212121</color>
+    <color name="darkBackgroundColor">#303030</color>
+    <color name="darkTextColorPrimary">#FFFFFF</color>
+    <color name="darkTextColorSecondary">#919191</color>
+    <color name="darkNavigationBarColor">#212121</color>
+
+
+
+    <color name="lightColorPrimary">#FFD54F</color>
+    <color name="lightColorPrimaryDark">#FFC107</color>
+    <color name="lightListBackground">#F5F5F5</color>
+    <color name="lightCardBackground">#FFFFFF</color>
+    <color name="lightCardTitle">#000000</color>
+    <color name="lightDialogTitle">#000000</color>
+
 </resources>

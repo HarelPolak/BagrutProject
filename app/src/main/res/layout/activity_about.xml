@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AboutActivity"
-    android:background="#4CAF50"
     >
 
     <TextView
@@ -14,6 +13,6 @@
         android:text="About Activity"
         android:textSize="30dp"
         android:gravity="center"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center" />
 
 </LinearLayout>

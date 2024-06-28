@@ -1,7 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.BagrutProject" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">#272729</item>
+        <item name="colorPrimaryVariant">#161617</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorAccent">#DC530B</item>
     </style>
 </resources>

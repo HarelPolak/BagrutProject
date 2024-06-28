@@ -4,14 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AlgorithmsFragment"
-    android:background="#0080FF"
     >
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listView"
-        android:divider="@color/black"
         android:dividerHeight="1dp"/>
 
 </FrameLayout>

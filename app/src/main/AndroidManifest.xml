@@ -16,9 +16,6 @@
             android:name=".AboutActivity"
             android:exported="false" />
         <activity
-            android:name=".AlgorithmsActivity"
-            android:exported="false" />
-        <activity
             android:name=".StudyActivity"
             android:exported="false" />
         <activity

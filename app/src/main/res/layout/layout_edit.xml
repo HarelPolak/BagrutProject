@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    style="@style/SCREEN">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,7 +28,8 @@
             android:text="3x3"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/TEXT_SECONDARY"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -47,7 +49,8 @@
             android:layout_height="match_parent"
             android:text="U2 R' D2 B2 L' R2 U2 R' D2 F2 R' B' U' L F L2 D' L' D R' U"
             android:textSize="10dp"
-            android:id="@+id/tvScrambleDialog"/>
+            android:id="@+id/tvScrambleDialog"
+            style="@style/TEXT_SECONDARY"/>
     </LinearLayout>
 
     <LinearLayout
@@ -60,13 +63,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Date: "
-            android:textSize="15dp"/>
+            android:textSize="15dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2024-05-20"
             android:textSize="10dp"
-            android:id="@+id/tvDateDialog"/>
+            android:id="@+id/tvDateDialog"
+            style="@style/TEXT_SECONDARY"/>
     </LinearLayout>
 
     <LinearLayout
@@ -85,7 +89,8 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textSize="10dp"
-            android:id="@+id/etCommentDialog"/>
+            android:id="@+id/etCommentDialog"
+            style="@style/TEXT_SECONDARY"/>
     </LinearLayout>
 
     <LinearLayout
@@ -101,7 +106,7 @@
             android:paddingHorizontal="10dp"
             android:text="No Penalty"
             android:textSize="15dp"
-            android:id="@+id/tvNoDialog"/>
+            android:id="@+id/tvNoDialog" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -109,7 +114,7 @@
             android:paddingHorizontal="10dp"
             android:text="+2"
             android:textSize="15dp"
-            android:id="@+id/tvPlus2Dialog"/>
+            android:id="@+id/tvPlus2Dialog" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -117,7 +122,7 @@
             android:paddingHorizontal="10dp"
             android:text="DNF"
             android:textSize="15dp"
-            android:id="@+id/tvDnfDialog"/>
+            android:id="@+id/tvDnfDialog" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
