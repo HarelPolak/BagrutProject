@@ -25,7 +25,15 @@
 
     <style name="BOTTOM_NAV">
         <item name="android:background">@color/darkColorPrimaryDark</item>
-        <item name="android:selectableItemBackground">@color/darkTextColorPrimary</item>
+        <item name="android:icon">@drawable/navigation_item_background</item>
+    </style>
+
+    <style name="BOTTOM_NAV_ITEM">
+        <item name="android:background">@color/darkTextColorPrimary</item>
+    </style>
+
+    <style name="BOTTOM_NAV_SELECTED_ITEM">
+        <item name="android:background">@color/darkColorAccent</item>
     </style>
 
 </resources>
