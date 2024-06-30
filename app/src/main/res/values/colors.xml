@@ -7,15 +7,15 @@
     <color name="darkBackgroundColor">#303030</color>
     <color name="darkTextColorPrimary">#FFFFFF</color>
     <color name="darkTextColorSecondary">#919191</color>
-    <color name="darkNavigationBarColor">#212121</color>
 
-
-
-    <color name="lightColorPrimary">#FFD54F</color>
-    <color name="lightColorPrimaryDark">#FFC107</color>
-    <color name="lightListBackground">#F5F5F5</color>
-    <color name="lightCardBackground">#FFFFFF</color>
-    <color name="lightCardTitle">#000000</color>
-    <color name="lightDialogTitle">#000000</color>
+    <color name="blue_100">#1348FF</color>
+    <color name="blue_200">#0A38D8</color>
+    <color name="blue_300">#052CB3</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_100">#C6C6C6</color>
+    <color name="white_200">#818181</color>
+    <color name="black">#000000</color>
+    <color name="orange_100">#EAB414</color>
+    <color name="gray_100">#8A000000</color>
 
 </resources>

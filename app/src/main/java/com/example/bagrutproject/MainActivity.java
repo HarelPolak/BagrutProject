@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.timer);
-        bottomNavigationView.setItemIconTintList(null);
 
         SharedPreferences sharedPreferences = getSharedPreferences("sp",MODE_PRIVATE);
         cubeType = sharedPreferences.getInt("cubeType", 0);

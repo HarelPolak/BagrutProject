@@ -5,4 +5,5 @@
     android:singleLine="true"
     android:layout_width="wrap_content"
     android:layout_height="?attr/actionBarSize"
-    android:ellipsize="marquee"/>
+    android:ellipsize="marquee"
+    android:textColor="@color/white"/>

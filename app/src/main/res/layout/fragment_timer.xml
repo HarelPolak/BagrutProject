@@ -20,7 +20,8 @@
             android:layout_margin="20dp"
             android:background="@drawable/baseline_edit_note_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/IMAGE_BUTTON_ICON"/>
 
         <ImageButton
             android:id="@+id/ibDelete"
@@ -29,7 +30,8 @@
             android:layout_margin="20dp"
             android:background="@drawable/baseline_delete_24"
             app:layout_constraintStart_toEndOf="@+id/ibEdit"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/IMAGE_BUTTON_ICON"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -47,7 +49,8 @@
             android:text="00.00"
             android:textSize="80dp"
             android:gravity="center"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            style="@style/TEXT_PRIMARY"/>
 
         <TextView
             android:id="@+id/tvScramble"
@@ -56,7 +59,7 @@
             android:textSize="15dp"
             android:gravity="center"
             android:layout_marginHorizontal="10dp"
-            style="@style/TEXT_SECONDARY"/>
+            style="@style/TEXT_PRIMARY"/>
 
     </LinearLayout>
 

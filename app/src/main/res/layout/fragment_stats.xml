@@ -8,11 +8,20 @@
     tools:context=".StatsFragment"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Statistics"
+        android:textSize="20dp"
+        style="@style/TEXT_PRIMARY"
+        android:layout_margin="5dp"/>
+
     <TableLayout
         android:id="@+id/table_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_margin="5dp"
+        android:background="@drawable/curved_border">
 
         <TableRow
             android:layout_width="match_parent">
@@ -29,15 +38,21 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="current"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="best"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
         </TableRow>
+
+        <View  android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/blue_100"/>
 
         <TableRow
             android:layout_width="match_parent">
@@ -47,7 +62,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="single"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
 
             <TextView
                 android:id="@+id/tvCurrentSingle"
@@ -55,7 +71,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="00:00.00"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
 
             <TextView
                 android:id="@+id/tvBestSingle"
@@ -63,8 +80,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="00:00.00"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
         </TableRow>
+
+        <View  android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/blue_100"/>
 
         <TableRow
             android:layout_width="match_parent">
@@ -74,7 +96,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="avg5"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
 
             <TextView
                 android:id="@+id/tvCurrentAvg5"
@@ -82,7 +105,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="00:00.00"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
 
             <TextView
                 android:id="@+id/tvBestAvg5"
@@ -90,8 +114,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="00:00.00"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
         </TableRow>
+
+        <View  android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/blue_100"/>
 
         <TableRow
             android:layout_width="match_parent">
@@ -101,7 +130,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="avg12"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
 
             <TextView
                 android:id="@+id/tvCurrentAvg12"
@@ -109,7 +139,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="00:00.00"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
 
             <TextView
                 android:id="@+id/tvBestAvg12"
@@ -117,8 +148,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="00:00.00"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
         </TableRow>
+
+        <View  android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/blue_100"/>
 
         <TableRow
             android:layout_width="match_parent">
@@ -128,7 +164,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="total avg"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
 
             <TextView
                 android:id="@+id/tvTotalAvg"
@@ -136,7 +173,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="00:00.00"
-                android:gravity="center" />
+                android:gravity="center"
+                style="@style/TEXT_PRIMARY"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -147,10 +185,19 @@
         </TableRow>
     </TableLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="History"
+        android:textSize="20dp"
+        style="@style/TEXT_PRIMARY"
+        android:layout_margin="5dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/solveRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"/>
 
 
 </LinearLayout>

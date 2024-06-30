@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    style="@style/SCREEN">
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,8 +27,7 @@
             android:text="3x3"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            style="@style/TEXT_SECONDARY"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -49,8 +47,7 @@
             android:layout_height="match_parent"
             android:text="U2 R' D2 B2 L' R2 U2 R' D2 F2 R' B' U' L F L2 D' L' D R' U"
             android:textSize="10dp"
-            android:id="@+id/tvScrambleDialog"
-            style="@style/TEXT_SECONDARY"/>
+            android:id="@+id/tvScrambleDialog" />
     </LinearLayout>
 
     <LinearLayout
@@ -69,8 +66,7 @@
             android:layout_height="wrap_content"
             android:text="2024-05-20"
             android:textSize="10dp"
-            android:id="@+id/tvDateDialog"
-            style="@style/TEXT_SECONDARY"/>
+            android:id="@+id/tvDateDialog" />
     </LinearLayout>
 
     <LinearLayout
@@ -89,8 +85,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textSize="10dp"
-            android:id="@+id/etCommentDialog"
-            style="@style/TEXT_SECONDARY"/>
+            android:id="@+id/etCommentDialog" />
     </LinearLayout>
 
     <LinearLayout
@@ -146,6 +141,7 @@
             android:background="@drawable/baseline_delete_24"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/IMAGE_BUTTON_ICON"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

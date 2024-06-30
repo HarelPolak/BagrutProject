@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    style="@style/LIST_ITEM">
 
     <ImageView
         android:id="@+id/item_image"
@@ -16,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:textSize="20dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        style="@style/TEXT_PRIMARY"/>
 
 </LinearLayout>

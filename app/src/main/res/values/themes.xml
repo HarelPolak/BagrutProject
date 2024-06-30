@@ -1,39 +1,38 @@
 <resources xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <item name="colorPrimary">@color/darkColorPrimary</item>
-        <item name="colorPrimaryDark">@color/darkColorPrimaryDark</item>
-        <item name="colorAccent">@color/darkColorAccent</item>
-        <item name="android:windowBackground">@color/darkBackgroundColor</item>
-        <item name="android:textColor">@color/darkTextColorPrimary</item>
-        <item name="android:textColorSecondary">@color/darkTextColorSecondary</item>
-        <item name="tabBackground">@color/darkBackgroundColor</item>
-        <item name="tabIndicatorColor">@color/darkTextColorPrimary</item>
-        <item name="tabSelectedTextColor">@color/darkTextColorPrimary</item>
-        <item name="tabTextColor">@color/darkTextColorSecondary</item>
-        <item name="bottomNavigationStyle">@style/BOTTOM_NAV</item>
-
+        <item name="colorPrimary">@color/blue_200</item>
+        <item name="colorPrimaryDark">@color/blue_300</item>
+        <item name="colorAccent">@color/orange_100</item>
+        <item name="android:windowBackground">@color/blue_100</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white_100</item>
     </style>
 
-    <style name="SCREEN">
-        <item name="android:background">@color/darkBackgroundColor</item>
+    <style name="TEXT_PRIMARY">
+        <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="TEXT_SECONDARY">
-        <item name="android:textColor">@color/darkTextColorSecondary</item>
+    <style name="LIST_ITEM">
+        <item name="android:background">@color/blue_200</item>
     </style>
 
-    <style name="BOTTOM_NAV">
-        <item name="android:background">@color/darkColorPrimaryDark</item>
-        <item name="android:icon">@drawable/navigation_item_background</item>
+    <style name="IMAGE_BUTTON_ICON">
+        <item name="android:backgroundTint">@color/white</item>
     </style>
 
-    <style name="BOTTOM_NAV_ITEM">
-        <item name="android:background">@color/darkTextColorPrimary</item>
+    <style name="BottomNavigationTheme" parent="AppTheme">
+        <item name="android:background">@color/blue_300</item>
+        <item name="colorPrimary">@color/orange_100</item>
     </style>
 
-    <style name="BOTTOM_NAV_SELECTED_ITEM">
-        <item name="android:background">@color/darkColorAccent</item>
+    <style name="tabLayoutTheme" parent="AppTheme">
+        <item name="android:background">@color/blue_100</item>
+        <item name="colorPrimary">@color/orange_100</item>
     </style>
+
+
+
+
 
 </resources>

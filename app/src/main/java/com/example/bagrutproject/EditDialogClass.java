@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 public class EditDialogClass implements View.OnClickListener {
 
@@ -62,13 +63,13 @@ public class EditDialogClass implements View.OnClickListener {
         tvDate.setText(s.getDate());
         etComment.setText(s.getComment());
         if(s.getPenalty() == 0){
-            tvNo.setTextColor(Color.BLUE);
+            tvNo.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
         }
         else if(s.getPenalty() == 1){
-            tvPlus2.setTextColor(Color.BLUE);
+            tvPlus2.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
         }
         else{
-            tvDnf.setTextColor(Color.BLUE);
+            tvDnf.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
         }
 
         d.show();
@@ -81,23 +82,23 @@ public class EditDialogClass implements View.OnClickListener {
         if(view == tvNo){
             s.setPenalty(0);
             tvTime.setText(s.getDisplayPenaltyText());
-            tvPlus2.setTextColor(Color.BLACK);
-            tvDnf.setTextColor(Color.BLACK);
-            tvNo.setTextColor(Color.BLUE);
+            tvPlus2.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
+            tvDnf.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
+            tvNo.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
         }
         else if(view == tvPlus2){
             s.setPenalty(1);
             tvTime.setText(s.getDisplayPenaltyText());
-            tvNo.setTextColor(Color.BLACK);
-            tvDnf.setTextColor(Color.BLACK);
-            tvPlus2.setTextColor(Color.BLUE);
+            tvNo.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
+            tvDnf.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
+            tvPlus2.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
         }
         else if(view == tvDnf){
             s.setPenalty(2);
             tvTime.setText(s.getDisplayPenaltyText());
-            tvNo.setTextColor(Color.BLACK);
-            tvPlus2.setTextColor(Color.BLACK);
-            tvDnf.setTextColor(Color.BLUE);
+            tvNo.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
+            tvPlus2.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
+            tvDnf.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
         }
         else if(view == ibDelete){
             sh.open();

@@ -13,6 +13,7 @@
         android:textSize="30dp"
         android:gravity="center"
         android:layout_gravity="center"
-        android:id="@+id/tv"/>
+        android:id="@+id/tv"
+        style="@style/TEXT_PRIMARY"/>
 
 </LinearLayout>
