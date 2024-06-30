@@ -14,6 +14,6 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:id="@+id/tv"
-        style="@style/TEXT_PRIMARY"/>
+        style="@style/TEXT_ON_PRIMARY"/>
 
 </LinearLayout>

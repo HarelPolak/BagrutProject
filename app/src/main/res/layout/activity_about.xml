@@ -14,6 +14,6 @@
         android:textSize="30dp"
         android:gravity="center"
         android:layout_gravity="center"
-        style="@style/TEXT_PRIMARY"/>
+        style="@style/TEXT_ON_PRIMARY"/>
 
 </LinearLayout>

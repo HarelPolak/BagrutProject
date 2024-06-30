@@ -85,10 +85,15 @@ public class StatsFragment extends Fragment implements OnItemClickListener, OnIt
 
     @Override
     public void onItemLongClicked(int position) {
-        sh.open();
-        sh.deleteByRow(solves.get(position).getSolveId());
-        sh.close();
-        updateData();
+        UtilActivity.showDeleteConfirmationDialog(getActivity(), new Runnable() {
+            @Override
+            public void run() {
+                sh.open();
+                sh.deleteByRow(solves.get(position).getSolveId());
+                sh.close();
+                updateData();
+            }
+        });
     }
 
     @Override

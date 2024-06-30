@@ -9,7 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:paddingHorizontal="10dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/tvTimeDialog"
@@ -31,10 +32,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <View  android:layout_width="match_parent"
+        android:layout_height="1dp"
+        style="@style/DIVIDER"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="10dp"
+        android:paddingTop="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -45,6 +51,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="U2 R' D2 B2 L' R2 U2 R' D2 F2 R' B' U' L F L2 D' L' D R' U"
             android:textSize="10dp"
             android:id="@+id/tvScrambleDialog" />
@@ -85,6 +92,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textSize="10dp"
+            style="@style/TEXT_ON_OTHER"
             android:id="@+id/etCommentDialog" />
     </LinearLayout>
 
@@ -141,7 +149,6 @@
             android:background="@drawable/baseline_delete_24"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            style="@style/IMAGE_BUTTON_ICON"/>
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

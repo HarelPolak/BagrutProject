@@ -1,8 +1,10 @@
 package com.example.bagrutproject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -100,12 +102,16 @@ public class EditDialogClass implements View.OnClickListener {
             tvPlus2.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
             tvDnf.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
         }
-        else if(view == ibDelete){
-            sh.open();
-            sh.deleteByRow(s.getSolveId());
-            sh.close();
-            d.dismiss();
-            Toast.makeText(a, "deleted", Toast.LENGTH_LONG).show();
+        else if (view == ibDelete) {
+            UtilActivity.showDeleteConfirmationDialog(a, new Runnable() {
+                @Override
+                public void run() {
+                    sh.open();
+                    sh.deleteByRow(s.getSolveId());
+                    sh.close();
+                    d.dismiss();
+                }
+            });
         }
         else if(view == btnOk){
             s.setComment(String.valueOf(etComment.getText()));

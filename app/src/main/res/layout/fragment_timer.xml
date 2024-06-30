@@ -50,7 +50,7 @@
             android:textSize="80dp"
             android:gravity="center"
             android:layout_gravity="center"
-            style="@style/TEXT_PRIMARY"/>
+            style="@style/TEXT_ON_PRIMARY"/>
 
         <TextView
             android:id="@+id/tvScramble"
@@ -59,7 +59,7 @@
             android:textSize="15dp"
             android:gravity="center"
             android:layout_marginHorizontal="10dp"
-            style="@style/TEXT_PRIMARY"/>
+            style="@style/TEXT_ON_PRIMARY"/>
 
     </LinearLayout>
 

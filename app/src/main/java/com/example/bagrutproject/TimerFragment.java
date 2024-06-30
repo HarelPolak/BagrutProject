@@ -223,13 +223,17 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     }
 
     private void deleteRecentSolve(){
-        sh.open();
-        sh.deleteByRow(currentSolve.getSolveId());
-        sh.close();
-        currentSolve = null;
-        tvTimer.setText("00.00");
-        solveTime = 0;
-        Toast.makeText(this.getContext(), "deleted", Toast.LENGTH_LONG).show();
+        UtilActivity.showDeleteConfirmationDialog(getActivity(), new Runnable() {
+            @Override
+            public void run() {
+                sh.open();
+                sh.deleteByRow(currentSolve.getSolveId());
+                sh.close();
+                currentSolve = null;
+                tvTimer.setText("00.00");
+                solveTime = 0;
+            }
+        });
     }
 
     @Override

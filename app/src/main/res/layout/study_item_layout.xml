@@ -2,22 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    style="@style/LIST_ITEM">
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/item_image"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:padding="10dp"/>
-
-    <TextView
-        android:id="@+id/item_text"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:textSize="20dp"
-        android:layout_gravity="center"
-        style="@style/TEXT_PRIMARY"/>
+        android:orientation="horizontal"
+        android:background="@drawable/curved_border"
+        android:layout_margin="5dp">
 
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"
+            android:layout_gravity="center" />
+    </LinearLayout>
 </LinearLayout>
