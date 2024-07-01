@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/blue_200</item>
         <item name="colorPrimaryDark">@color/blue_300</item>
         <item name="colorAccent">@color/orange_100</item>
@@ -17,20 +17,16 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="LIST_ITEM">
-        <item name="android:background">@color/white</item>
-    </style>
-
-    <style name="DIVIDER">
-        <item name="android:background">@color/white_100</item>
-    </style>
-
     <style name="IMAGE_BUTTON_ICON">
         <item name="android:backgroundTint">@color/white</item>
     </style>
 
     <style name="CURVED_BORDER">
         <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <style name="DIVIDER">
+        <item name="android:background">@color/white_100</item>
     </style>
 
     <style name="BottomNavigationTheme" parent="AppTheme">
@@ -50,10 +46,6 @@
     <style name="SPINNER_ITEM" parent="@style/Widget.AppCompat.DropDownItem.Spinner">
         <item name="android:background">@color/white</item>
         <item name="android:textColor">@color/black</item>
-    </style>
-
-    <style name="BORDER">
-        <item name="android:color">@color/white</item>
     </style>
 
 </resources>

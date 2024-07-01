@@ -17,5 +17,8 @@
     <color name="black">#000000</color>
     <color name="orange_100">#EAB414</color>
     <color name="gray_100">#8A000000</color>
+    <color name="gray_200">#212121</color>
+    <color name="gray_300">#303030</color>
+
 
 </resources>
