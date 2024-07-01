@@ -17,10 +17,6 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="LIST_ITEM">
-        <item name="android:background">@color/white</item>
-    </style>
-
     <style name="DIVIDER">
         <item name="android:background">@color/white_100</item>
     </style>
@@ -50,10 +46,6 @@
     <style name="SPINNER_ITEM" parent="@style/Widget.AppCompat.DropDownItem.Spinner">
         <item name="android:background">@color/white</item>
         <item name="android:textColor">@color/black</item>
-    </style>
-
-    <style name="BORDER">
-        <item name="android:color">@color/white</item>
     </style>
 
 </resources>

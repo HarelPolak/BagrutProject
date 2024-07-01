@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Statistics"
         android:textSize="20dp"
-        style="@style/TEXT_ON_PRIMARY"
+        style="@style/TEXT_ON_OTHER"
         android:layout_margin="5dp"/>
 
     <TableLayout
@@ -60,7 +60,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="single"
+                android:text="time"
                 android:gravity="center" />
 
             <TextView
@@ -91,7 +91,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="avg5"
+                android:text="ao5"
                 android:gravity="center" />
 
             <TextView
@@ -122,7 +122,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="avg12"
+                android:text="ao12"
                 android:gravity="center" />
 
             <TextView
@@ -153,7 +153,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="total avg"
+                android:text="mean"
                 android:gravity="center" />
 
             <TextView
@@ -178,7 +178,7 @@
         android:layout_height="wrap_content"
         android:text="History"
         android:textSize="20dp"
-        style="@style/TEXT_ON_PRIMARY"
+        style="@style/TEXT_ON_OTHER"
         android:layout_margin="5dp"/>
 
     <androidx.recyclerview.widget.RecyclerView

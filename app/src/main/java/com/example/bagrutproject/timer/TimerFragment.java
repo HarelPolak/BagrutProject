@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
@@ -50,7 +51,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     private final Runnable runnable = new Runnable() {
         public void run() {
             if(changeColor)
-                tvTimer.setTextColor(Color.GREEN);
+                tvTimer.setTextColor(ContextCompat.getColor(getActivity(), R.color.start_color));
             tvTimer.setText("00.00");
             solveTime = 0;
             timerShouldStart = true;
@@ -123,7 +124,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
                 else{
                     if(holdToStart){
                         if(changeColor)
-                            tvTimer.setTextColor(Color.RED);
+                            tvTimer.setTextColor(ContextCompat.getColor(getActivity(), R.color.wait_color));
                         handler.postDelayed(runnable, 300);
                     }
                     else{
