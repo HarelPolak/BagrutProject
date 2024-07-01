@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreferenceCompat;
@@ -19,7 +20,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Preference theme = findPreference("theme");
         if(theme!=null){
             theme.setOnPreferenceChangeListener((preference, newValue) -> {
-                Toast.makeText(this.getContext(), "Theme selected: " + newValue, Toast.LENGTH_LONG).show();
+                if(newValue.equals("classic")) {
+
+                }
+                else if(newValue.equals("dark")){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }
                 return true;
             });
         }
