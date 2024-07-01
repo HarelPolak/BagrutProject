@@ -1,15 +1,12 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.study;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.bagrutproject.study.AlgorithmsFragment;
+import com.example.bagrutproject.study.TutorialsFragment;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
 

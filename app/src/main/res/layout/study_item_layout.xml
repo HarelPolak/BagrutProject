@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@drawable/curved_border"
+        style="@style/CURVED_BORDER"
         android:layout_margin="5dp">
 
         <ImageView

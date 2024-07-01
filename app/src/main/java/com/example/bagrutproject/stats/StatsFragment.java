@@ -1,4 +1,4 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.stats;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -6,8 +6,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,18 +13,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.bagrutproject.dialogs.EditDialogClass;
+import com.example.bagrutproject.core.MainActivity;
+import com.example.bagrutproject.R;
+import com.example.bagrutproject.interfaces.OnItemClickListener;
+import com.example.bagrutproject.interfaces.OnItemLongClickListener;
+import com.example.bagrutproject.utils.UtilDialogs;
+import com.example.bagrutproject.utils.UtilStats;
+import com.example.bagrutproject.utils.UtilText;
 
 import java.util.List;
 
-public class StatsFragment extends Fragment implements OnItemClickListener, OnItemLongClickListener ,DialogInterface.OnDismissListener {
+public class StatsFragment extends Fragment implements OnItemClickListener, OnItemLongClickListener,DialogInterface.OnDismissListener {
 
     SolveHelper sh;
     TextView tvCurrentSingle, tvBestSingle, tvCurrentAvg5, tvBestAvg5, tvCurrentAvg12, tvBestAvg12, tvTotalAvg;
     Solve bestSingle, currentSingle;
     List<Solve> solves;
     Dialog editDialog;
-    SolveAdapter adapter;
+    SolveListAdapter adapter;
     long totalAvg, currentAvg5, bestAvg5, currentAvg12, bestAvg12;
 
     @Override
@@ -46,31 +52,31 @@ public class StatsFragment extends Fragment implements OnItemClickListener, OnIt
         sh.open();
         solves = sh.getAllSolvesByType(MainActivity.cubeType);
         sh.close();
-        currentSingle = UtilActivity.getCurrentSolve(solves);
-        bestSingle = UtilActivity.getBestSolve(solves);
-        currentAvg5 = UtilActivity.getCurrentAvg5(solves);
-        bestAvg5 = UtilActivity.getBestAvg5(solves);
-        currentAvg12 = UtilActivity.getCurrentAvg12(solves);
-        bestAvg12 = UtilActivity.getBestAvg12(solves);
-        totalAvg = UtilActivity.getTotalAverage(solves);
+        currentSingle = UtilStats.getCurrentSolve(solves);
+        bestSingle = UtilStats.getBestSolve(solves);
+        currentAvg5 = UtilStats.getCurrentAvg5(solves);
+        bestAvg5 = UtilStats.getBestAvg5(solves);
+        currentAvg12 = UtilStats.getCurrentAvg12(solves);
+        bestAvg12 = UtilStats.getBestAvg12(solves);
+        totalAvg = UtilStats.getTotalAverage(solves);
         if(currentSingle != null)
             tvCurrentSingle.setText(currentSingle.getDisplayPenaltyText());
         if(bestSingle != null)
             tvBestSingle.setText(bestSingle.getDisplayPenaltyText());
         if(currentAvg5 != -1)
-            tvCurrentAvg5.setText(UtilActivity.getDisplayText(currentAvg5));
+            tvCurrentAvg5.setText(UtilText.getDisplayText(currentAvg5));
         if(bestAvg5 != -1)
-            tvBestAvg5.setText(UtilActivity.getDisplayText(bestAvg5));
+            tvBestAvg5.setText(UtilText.getDisplayText(bestAvg5));
         if(currentAvg12 != -1)
-            tvCurrentAvg12.setText(UtilActivity.getDisplayText(currentAvg12));
+            tvCurrentAvg12.setText(UtilText.getDisplayText(currentAvg12));
         if(bestAvg12 != -1)
-            tvBestAvg12.setText(UtilActivity.getDisplayText(bestAvg12));
+            tvBestAvg12.setText(UtilText.getDisplayText(bestAvg12));
         if(totalAvg != -1)
-            tvTotalAvg.setText(UtilActivity.getDisplayText(totalAvg));
+            tvTotalAvg.setText(UtilText.getDisplayText(totalAvg));
 
         RecyclerView solveRecyclerView = view.findViewById(R.id.solveRecyclerView);
         solveRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new SolveAdapter(solves, this, this);
+        adapter = new SolveListAdapter(solves, this, this);
         solveRecyclerView.setAdapter(adapter);
 
         return view;
@@ -85,7 +91,7 @@ public class StatsFragment extends Fragment implements OnItemClickListener, OnIt
 
     @Override
     public void onItemLongClicked(int position) {
-        UtilActivity.showDeleteConfirmationDialog(getActivity(), new Runnable() {
+        UtilDialogs.showDeleteConfirmationDialog(getActivity(), new Runnable() {
             @Override
             public void run() {
                 sh.open();
@@ -105,13 +111,13 @@ public class StatsFragment extends Fragment implements OnItemClickListener, OnIt
         sh.open();
         solves = sh.getAllSolvesByType(MainActivity.cubeType);
         sh.close();
-        currentSingle = UtilActivity.getCurrentSolve(solves);
-        bestSingle = UtilActivity.getBestSolve(solves);
-        currentAvg5 = UtilActivity.getCurrentAvg5(solves);
-        bestAvg5 = UtilActivity.getBestAvg5(solves);
-        currentAvg12 = UtilActivity.getCurrentAvg12(solves);
-        bestAvg12 = UtilActivity.getBestAvg12(solves);
-        totalAvg = UtilActivity.getTotalAverage(solves);
+        currentSingle = UtilStats.getCurrentSolve(solves);
+        bestSingle = UtilStats.getBestSolve(solves);
+        currentAvg5 = UtilStats.getCurrentAvg5(solves);
+        bestAvg5 = UtilStats.getBestAvg5(solves);
+        currentAvg12 = UtilStats.getCurrentAvg12(solves);
+        bestAvg12 = UtilStats.getBestAvg12(solves);
+        totalAvg = UtilStats.getTotalAverage(solves);
         if(currentSingle != null)
             tvCurrentSingle.setText(currentSingle.getDisplayPenaltyText());
         else
@@ -121,23 +127,23 @@ public class StatsFragment extends Fragment implements OnItemClickListener, OnIt
         else
             tvBestSingle.setText("00:00.00");
         if(currentAvg5 != -1)
-            tvCurrentAvg5.setText(UtilActivity.getDisplayText(currentAvg5));
+            tvCurrentAvg5.setText(UtilText.getDisplayText(currentAvg5));
         else
             tvCurrentAvg5.setText("00:00.00");
         if(bestAvg5 != -1)
-            tvBestAvg5.setText(UtilActivity.getDisplayText(bestAvg5));
+            tvBestAvg5.setText(UtilText.getDisplayText(bestAvg5));
         else
             tvBestAvg5.setText("00:00.00");
         if(currentAvg12 != -1)
-            tvCurrentAvg12.setText(UtilActivity.getDisplayText(currentAvg12));
+            tvCurrentAvg12.setText(UtilText.getDisplayText(currentAvg12));
         else
             tvCurrentAvg12.setText("00:00.00");
         if(bestAvg12 != -1)
-            tvBestAvg12.setText(UtilActivity.getDisplayText(bestAvg12));
+            tvBestAvg12.setText(UtilText.getDisplayText(bestAvg12));
         else
             tvBestAvg12.setText("00:00.00");
         if(totalAvg != -1)
-            tvTotalAvg.setText(UtilActivity.getDisplayText(totalAvg));
+            tvTotalAvg.setText(UtilText.getDisplayText(totalAvg));
         else
             tvTotalAvg.setText("00:00.00");
         adapter.updateData(solves);

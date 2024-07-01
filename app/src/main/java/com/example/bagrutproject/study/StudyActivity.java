@@ -1,4 +1,4 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.study;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.example.bagrutproject.R;
 
 public class StudyActivity extends AppCompatActivity {
 

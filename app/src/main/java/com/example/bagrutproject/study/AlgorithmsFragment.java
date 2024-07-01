@@ -1,4 +1,4 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.study;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.bagrutproject.R;
+
 public class AlgorithmsFragment extends Fragment implements AdapterView.OnItemClickListener {
 
 
@@ -22,7 +24,7 @@ public class AlgorithmsFragment extends Fragment implements AdapterView.OnItemCl
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tutorials, container, false);
         listView = view.findViewById(R.id.listView);
-        StudyAdapter studyAdapter = new StudyAdapter(getActivity(), textArr, imageArr);
+        StudyListAdapter studyAdapter = new StudyListAdapter(getActivity(), textArr, imageArr);
         listView.setAdapter(studyAdapter);
         listView.setOnItemClickListener(this);
         return view;

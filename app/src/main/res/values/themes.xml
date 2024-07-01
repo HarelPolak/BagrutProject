@@ -30,7 +30,7 @@
     </style>
 
     <style name="CURVED_BORDER">
-        <item name="android:color">@color/white</item>
+        <item name="android:backgroundTint">@color/white</item>
     </style>
 
     <style name="BottomNavigationTheme" parent="AppTheme">

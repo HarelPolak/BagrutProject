@@ -1,6 +1,8 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.utils;
 
-public class ScrambleGenerator {
+import com.example.bagrutproject.core.MainActivity;
+
+public class UtilScrambles {
 
     static String[][] moves2x2 = {{"R", "R\'", "R2"},{"F", "F\'", "F2"},{"U", "U\'", "U2"}};
     static String[][] moves3x3 = {{"R", "R\'", "R2"},{"L", "L\'", "L2"},{"F", "F\'", "F2"},{"B", "B\'", "B2"},{"U", "U\'", "U2"},{"D", "D\'", "D2"}};

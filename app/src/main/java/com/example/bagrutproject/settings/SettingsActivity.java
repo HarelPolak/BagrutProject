@@ -1,4 +1,4 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.settings;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -7,16 +7,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class AboutActivity extends AppCompatActivity {
+import com.example.bagrutproject.R;
+
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_settings);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("About");
+        actionBar.setTitle("Settings");
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flFragment, new SettingsFragment())
+                .commit();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.study;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,14 +8,16 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class StudyAdapter extends BaseAdapter {
+import com.example.bagrutproject.R;
+
+public class StudyListAdapter extends BaseAdapter {
 
     Context context;
     String textArr[];
     int[] imageArr;
     LayoutInflater inflater;
 
-    public StudyAdapter(Context context, String[] textArr, int[] imageArr) {
+    public StudyListAdapter(Context context, String[] textArr, int[] imageArr) {
         this.context = context;
         this.textArr = textArr;
         this.imageArr = imageArr;

@@ -1,30 +1,38 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.dialogs;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.os.Bundle;
+import android.graphics.Typeface;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
-public class EditDialogClass implements View.OnClickListener {
+import com.example.bagrutproject.R;
+import com.example.bagrutproject.core.MainActivity;
+import com.example.bagrutproject.stats.Solve;
+import com.example.bagrutproject.stats.SolveHelper;
+import com.example.bagrutproject.utils.UtilDialogs;
+
+public class EditDialogClass implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     Activity a;
     public Dialog d;
     Solve s;
     SolveHelper sh;
-    public TextView tvTime, tvType, tvScramble, tvDate, tvDnf, tvPlus2, tvNo;
+    public TextView tvTime, tvType, tvScramble, tvDate;
+    public RadioGroup radioGroup;
+    public RadioButton rbNoPenalty, rbPlus2, rbDnf;
     public EditText etComment;
     public Button btnOk;
     ImageButton ibDelete;
@@ -43,12 +51,11 @@ public class EditDialogClass implements View.OnClickListener {
         tvType = d.findViewById(R.id.tvTypeDialog);
         tvScramble = d.findViewById(R.id.tvScrambleDialog);
         tvDate = d.findViewById(R.id.tvDateDialog);
-        tvDnf = d.findViewById(R.id.tvDnfDialog);
-        tvDnf.setOnClickListener(this);
-        tvPlus2 = d.findViewById(R.id.tvPlus2Dialog);
-        tvPlus2.setOnClickListener(this);
-        tvNo = d.findViewById(R.id.tvNoDialog);
-        tvNo.setOnClickListener(this);
+        radioGroup = d.findViewById(R.id.radioGroup);
+        rbNoPenalty = d.findViewById(R.id.rbNoPenalty);
+        rbPlus2 = d.findViewById(R.id.rbPlus2);
+        rbDnf = d.findViewById(R.id.rbDnf);
+        radioGroup.setOnCheckedChangeListener(this);
         btnOk = d.findViewById(R.id.btnOkDialog);
         btnOk.setOnClickListener(this);
         ibDelete = d.findViewById(R.id.ibDeleteDialog);
@@ -65,13 +72,13 @@ public class EditDialogClass implements View.OnClickListener {
         tvDate.setText(s.getDate());
         etComment.setText(s.getComment());
         if(s.getPenalty() == 0){
-            tvNo.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
+            rbNoPenalty.setChecked(true);
         }
         else if(s.getPenalty() == 1){
-            tvPlus2.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
+            rbPlus2.setChecked(true);
         }
         else{
-            tvDnf.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
+            rbDnf.setChecked(true);
         }
 
         d.show();
@@ -81,29 +88,8 @@ public class EditDialogClass implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if(view == tvNo){
-            s.setPenalty(0);
-            tvTime.setText(s.getDisplayPenaltyText());
-            tvPlus2.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
-            tvDnf.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
-            tvNo.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
-        }
-        else if(view == tvPlus2){
-            s.setPenalty(1);
-            tvTime.setText(s.getDisplayPenaltyText());
-            tvNo.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
-            tvDnf.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
-            tvPlus2.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
-        }
-        else if(view == tvDnf){
-            s.setPenalty(2);
-            tvTime.setText(s.getDisplayPenaltyText());
-            tvNo.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
-            tvPlus2.setTextColor(ContextCompat.getColor(a, R.color.gray_100));
-            tvDnf.setTextColor(ContextCompat.getColor(a, R.color.orange_100));
-        }
-        else if (view == ibDelete) {
-            UtilActivity.showDeleteConfirmationDialog(a, new Runnable() {
+        if (view == ibDelete) {
+            UtilDialogs.showDeleteConfirmationDialog(a, new Runnable() {
                 @Override
                 public void run() {
                     sh.open();
@@ -119,6 +105,23 @@ public class EditDialogClass implements View.OnClickListener {
             sh.updateByRow(s);
             sh.close();
             d.dismiss();
+        }
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        RadioButton radioButton = d.findViewById(i);
+        if(radioButton != null){
+            if(radioButton == rbNoPenalty){
+                s.setPenalty(0);
+            }
+            else if(radioButton == rbPlus2){
+                s.setPenalty(1);
+            }
+            else if(radioButton == rbDnf){
+                s.setPenalty(2);
+            }
+            tvTime.setText(s.getDisplayPenaltyText());
         }
     }
 }

@@ -1,23 +1,24 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.stats;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.bagrutproject.R;
+import com.example.bagrutproject.interfaces.OnItemClickListener;
+import com.example.bagrutproject.interfaces.OnItemLongClickListener;
 
 import java.util.List;
 
-public class SolveAdapter extends RecyclerView.Adapter<SolveViewHolder> {
+public class SolveListAdapter extends RecyclerView.Adapter<SolveViewHolder> {
 
     private List<Solve> solves;
     OnItemClickListener listener;
     OnItemLongClickListener longClickListener;
 
-    public SolveAdapter(List<Solve> solves, OnItemClickListener listener, OnItemLongClickListener longClickListener) {
+    public SolveListAdapter(List<Solve> solves, OnItemClickListener listener, OnItemLongClickListener longClickListener) {
         this.solves = solves;
         this.listener = listener;
         this.longClickListener = longClickListener;

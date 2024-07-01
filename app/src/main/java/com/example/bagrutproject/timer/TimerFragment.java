@@ -1,4 +1,4 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.timer;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -18,6 +18,16 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.bagrutproject.dialogs.EditDialogClass;
+import com.example.bagrutproject.core.MainActivity;
+import com.example.bagrutproject.R;
+import com.example.bagrutproject.stats.Solve;
+import com.example.bagrutproject.stats.SolveHelper;
+import com.example.bagrutproject.utils.UtilDialogs;
+import com.example.bagrutproject.utils.UtilScrambles;
+import com.example.bagrutproject.utils.UtilStats;
+import com.example.bagrutproject.utils.UtilText;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -65,9 +75,9 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         timer = new Timer();
         timerIsRunning = false;
         timerShouldStart = false;
-        tvTimer.setText(UtilActivity.getDisplayText(solveTime));
+        tvTimer.setText(UtilText.getDisplayText(solveTime));
         tvScramble = view.findViewById(R.id.tvScramble);
-        scramble = ScrambleGenerator.generateScramble();
+        scramble = UtilScrambles.generateScramble();
         tvScramble.setText(scramble);
         return view;
     }
@@ -138,7 +148,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     }
 
     private void startTimer() {
-        currentSolve = new Solve(-1, MainActivity.cubeType, 0, 0, scramble, "", UtilActivity.getTodaysDate());
+        currentSolve = new Solve(-1, MainActivity.cubeType, 0, 0, scramble, "", UtilText.getTodaysDate());
         timerTask = new TimerTask() {
             @Override
             public void run() {
@@ -147,7 +157,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
                     public void run() {
                         if(timerIsRunning){
                             solveTime += 10;
-                            tvTimer.setText(UtilActivity.getDisplayText(solveTime));
+                            tvTimer.setText(UtilText.getDisplayText(solveTime));
                         }
                     }
                 });
@@ -167,7 +177,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
             sh.close();
         }
         addSolve();
-        scramble = ScrambleGenerator.generateScramble();
+        scramble = UtilScrambles.generateScramble();
         tvScramble.setText(scramble);
     }
 
@@ -176,7 +186,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
             timerTask.cancel();
             timerIsRunning = false;
         }
-        scramble = ScrambleGenerator.generateScramble();
+        scramble = UtilScrambles.generateScramble();
         tvScramble.setText(scramble);
         tvTimer.setText("00.00");
         solveTime = 0;
@@ -223,7 +233,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     }
 
     private void deleteRecentSolve(){
-        UtilActivity.showDeleteConfirmationDialog(getActivity(), new Runnable() {
+        UtilDialogs.showDeleteConfirmationDialog(getActivity(), new Runnable() {
             @Override
             public void run() {
                 sh.open();

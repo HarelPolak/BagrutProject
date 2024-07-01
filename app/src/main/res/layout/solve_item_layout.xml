@@ -7,7 +7,8 @@
     android:orientation="vertical"
     android:layout_marginBottom="7dp"
     android:layout_marginHorizontal="5dp"
-    android:background="@drawable/curved_border">
+    android:background="@drawable/curved_border"
+    style="@style/CURVED_BORDER">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

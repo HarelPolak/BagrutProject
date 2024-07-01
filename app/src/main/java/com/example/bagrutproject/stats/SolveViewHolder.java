@@ -1,14 +1,12 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.stats;
 
-import static java.security.AccessController.getContext;
-
-import android.app.Activity;
-import android.app.Dialog;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.bagrutproject.R;
+import com.example.bagrutproject.stats.Solve;
 
 public class SolveViewHolder extends RecyclerView.ViewHolder {
 

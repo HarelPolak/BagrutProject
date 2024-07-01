@@ -1,6 +1,7 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.stats;
 
-import java.util.Date;
+import com.example.bagrutproject.utils.UtilStats;
+import com.example.bagrutproject.utils.UtilText;
 
 public class Solve {
     private long solveId;
@@ -95,10 +96,10 @@ public class Solve {
 
     public String getDisplayPenaltyText(){
         if(penalty == 0){
-            return UtilActivity.getDisplayText(time);
+            return UtilText.getDisplayText(time);
         }
         if(penalty == 1){
-            return UtilActivity.getDisplayText(time+2000)+"+";
+            return UtilText.getDisplayText(time+2000)+"+";
         }
         if(penalty == 2){
             return "DNF";

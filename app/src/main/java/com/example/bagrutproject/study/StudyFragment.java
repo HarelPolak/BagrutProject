@@ -1,19 +1,18 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.study;
 
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.bagrutproject.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class StudyFragment extends Fragment {

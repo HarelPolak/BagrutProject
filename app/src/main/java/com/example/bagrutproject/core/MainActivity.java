@@ -1,4 +1,4 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.core;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +14,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
+import com.example.bagrutproject.R;
+import com.example.bagrutproject.settings.AboutActivity;
+import com.example.bagrutproject.settings.SettingsActivity;
+import com.example.bagrutproject.stats.StatsFragment;
+import com.example.bagrutproject.study.StudyFragment;
+import com.example.bagrutproject.timer.TimerFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {

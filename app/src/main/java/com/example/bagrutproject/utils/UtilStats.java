@@ -1,36 +1,13 @@
-package com.example.bagrutproject;
+package com.example.bagrutproject.utils;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
+import com.example.bagrutproject.stats.Solve;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
-public class UtilActivity {
-
-    public static String getDisplayText(long solveTime) {
-        int milliseconds = (int) ((solveTime % 1000) / 10);
-        int seconds = (int) (solveTime / 1000) % 60;
-        int minutes = (int) solveTime / 60000;
-
-        if(minutes==0)
-            return String.format("%02d", seconds) + "." + String.format("%02d", milliseconds);
-        return String.format("%02d", minutes) + ":" + String.format("%02d", seconds) + "." + String.format("%02d", milliseconds);
-    }
-    public static String getTodaysDate(){
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = cal.getTime();
-        String formattedDate = formatter.format(date);
-        return formattedDate;
-    }
-
+public class UtilStats {
     public static Solve getCurrentSolve(List<Solve> solves){
         if(solves.size()!=0){
             if(solves.get(0).getPenalty()!=2)
@@ -159,24 +136,4 @@ public class UtilActivity {
             return -1;
         return sum/count;
     }
-
-    public static void showDeleteConfirmationDialog(Context context, final Runnable onDeleteConfirmed) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage("Are you sure you want to delete this solve?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        onDeleteConfirmed.run();
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
-
 }

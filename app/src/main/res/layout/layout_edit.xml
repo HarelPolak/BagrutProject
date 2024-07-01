@@ -52,7 +52,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="U2 R' D2 B2 L' R2 U2 R' D2 F2 R' B' U' L F L2 D' L' D R' U"
             android:textSize="10dp"
             android:id="@+id/tvScrambleDialog" />
     </LinearLayout>
@@ -71,7 +70,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2024-05-20"
             android:textSize="10dp"
             android:id="@+id/tvDateDialog" />
     </LinearLayout>
@@ -103,29 +101,35 @@
         android:paddingVertical="10dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="10dp"
-            android:text="No Penalty"
-            android:textSize="15dp"
-            android:id="@+id/tvNoDialog" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="10dp"
-            android:text="+2"
-            android:textSize="15dp"
-            android:id="@+id/tvPlus2Dialog" />
+            <RadioButton
+                android:id="@+id/rbNoPenalty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Penalty"
+                android:textSize="15dp"
+                android:checked="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="10dp"
-            android:text="DNF"
-            android:textSize="15dp"
-            android:id="@+id/tvDnfDialog" />
+            <RadioButton
+                android:id="@+id/rbPlus2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+2"
+                android:textSize="15dp" />
+
+            <RadioButton
+                android:id="@+id/rbDnf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DNF"
+                android:textSize="15dp" />
+
+        </RadioGroup>
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
