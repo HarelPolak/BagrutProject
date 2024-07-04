@@ -1,32 +1,31 @@
 package com.example.bagrutproject.stats;
 
-import com.example.bagrutproject.utils.UtilStats;
 import com.example.bagrutproject.utils.UtilText;
 
 public class Solve {
     private long solveId;
     private int cubeType;
     private int penalty;
-    private long time;
+    private long solveTime;
     private String scramble;
     private String comment;
     private String date;
 
-    public Solve(long solveId, int cubeType, int penalty, long time, String scramble, String comment, String date) {
+    public Solve(long solveId, int cubeType, int penalty, long solveTime, String scramble, String comment, String date) {
         this.solveId = solveId;
         this.cubeType = cubeType;
         this.penalty = penalty;
-        this.time = time;
+        this.solveTime = solveTime;
         this.scramble = scramble;
         this.comment = comment;
         this.date = date;
     }
 
-    public Solve(int cubeType, int penalty, long time, String scramble, String comment, String date) {
+    public Solve(int cubeType, int penalty, long solveTime, String scramble, String comment, String date) {
         this.solveId = solveId;
         this.cubeType = cubeType;
         this.penalty = penalty;
-        this.time = time;
+        this.solveTime = solveTime;
         this.scramble = scramble;
         this.comment = comment;
         this.date = date;
@@ -48,12 +47,12 @@ public class Solve {
         this.cubeType = cubeType;
     }
 
-    public long getTime() {
-        return time;
+    public long getSolveTime() {
+        return solveTime;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public void setSolveTime(long solveTime) {
+        this.solveTime = solveTime;
     }
 
     public String getScramble() {
@@ -90,21 +89,20 @@ public class Solve {
 
     public long getPenaltyTime(){
         if (penalty == 1)
-            return time + 2000;
-        return time;
+            return solveTime + 2000;
+        return solveTime;
     }
 
     public String getDisplayPenaltyText(){
         if(penalty == 0){
-            return UtilText.getDisplayText(time);
+            return UtilText.getDisplayText(solveTime);
         }
         if(penalty == 1){
-            return UtilText.getDisplayText(time+2000)+"+";
+            return UtilText.getDisplayText(solveTime +2000)+"+";
         }
         if(penalty == 2){
             return "DNF";
         }
         return null;
     }
-
 }

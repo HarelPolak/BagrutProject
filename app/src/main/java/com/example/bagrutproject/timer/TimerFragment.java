@@ -16,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +29,6 @@ import com.example.bagrutproject.stats.Solve;
 import com.example.bagrutproject.stats.SolveHelper;
 import com.example.bagrutproject.utils.UtilDialogs;
 import com.example.bagrutproject.utils.UtilScrambles;
-import com.example.bagrutproject.utils.UtilStats;
 import com.example.bagrutproject.utils.UtilText;
 
 import java.util.Timer;
@@ -37,6 +38,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
 
     View view_timer_fragment;
     Dialog editDialog;
+    Animation celebrateAnimation;
     TextView tvTimer, tvScramble;
     ImageButton ibEdit, ibDelete;
     Timer timer;
@@ -73,6 +75,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
 
         sh = new SolveHelper(getContext());
 
+        celebrateAnimation = AnimationUtils.loadAnimation(getContext(),R.anim.celecrate);
         timer = new Timer();
         timerIsRunning = false;
         timerShouldStart = false;
@@ -173,6 +176,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         if(celebrate){
             sh.open();
             if(sh.isBestTime(MainActivity.cubeType, solveTime)){
+                tvTimer.startAnimation(celebrateAnimation);
                 Toast.makeText(this.getContext(), "new PB", Toast.LENGTH_LONG).show();
             }
             sh.close();
@@ -226,7 +230,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     }
 
     private void addSolve(){
-        currentSolve.setTime(solveTime);
+        currentSolve.setSolveTime(solveTime);
         sh.open();
         currentSolve = sh.createSolve(currentSolve);
         sh.close();

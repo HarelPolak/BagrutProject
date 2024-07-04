@@ -13,19 +13,17 @@ import com.example.bagrutproject.R;
 public class StudyListAdapter extends BaseAdapter {
 
     Context context;
-    String textArr[];
-    int[] imageArr;
+    Study[] studyArr;
     LayoutInflater inflater;
 
-    public StudyListAdapter(Context context, String[] textArr, int[] imageArr) {
+    public StudyListAdapter(Context context, Study[] studyArr) {
         this.context = context;
-        this.textArr = textArr;
-        this.imageArr = imageArr;
+        this.studyArr = studyArr;
         this.inflater = LayoutInflater.from(context);
     }
     @Override
     public int getCount() {
-        return textArr.length;
+        return studyArr.length;
     }
 
     @Override
@@ -43,8 +41,8 @@ public class StudyListAdapter extends BaseAdapter {
         view = inflater.inflate(R.layout.study_item_layout, null);
         TextView tv = view.findViewById(R.id.item_text);
         ImageView iv = view.findViewById(R.id.item_image);
-        tv.setText(textArr[i]);
-        iv.setImageResource(imageArr[i]);
+        tv.setText(studyArr[i].getName());
+        iv.setImageResource(studyArr[i].getIcon());
         return view;
     }
 }

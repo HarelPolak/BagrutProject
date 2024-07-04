@@ -56,7 +56,7 @@ public class SolveHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(SolveHelper.COLUMN_TYPE, s.getCubeType());
         values.put(SolveHelper.COLUMN_PENALTY, s.getPenalty());
-        values.put(SolveHelper.COLUMN_TIME, s.getTime());
+        values.put(SolveHelper.COLUMN_TIME, s.getSolveTime());
         values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
         values.put(SolveHelper.COLUMN_COMMENT, s.getComment());
         values.put(SolveHelper.COLUMN_DATE, s.getDate());
@@ -75,7 +75,7 @@ public class SolveHelper extends SQLiteOpenHelper {
         values.put(SolveHelper.COLUMN_ID, s.getSolveId());
         values.put(SolveHelper.COLUMN_TYPE, s.getCubeType());
         values.put(SolveHelper.COLUMN_PENALTY, s.getPenalty());
-        values.put(SolveHelper.COLUMN_TIME, s.getTime());
+        values.put(SolveHelper.COLUMN_TIME, s.getSolveTime());
         values.put(SolveHelper.COLUMN_SCRAMBLE, s.getScramble());
         values.put(SolveHelper.COLUMN_COMMENT, s.getComment());
         values.put(SolveHelper.COLUMN_DATE, s.getDate());

@@ -10,28 +10,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_cbx_round"
         android:supportsRtl="false"
-        android:theme="@style/DarkTheme"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
             android:name=".settings.AboutActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight"/>
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".study.StudyActivity"
+            android:name=".study.InstructionActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".settings.SettingsActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".core.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

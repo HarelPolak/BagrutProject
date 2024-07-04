@@ -11,7 +11,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Statistics"
+        android:text="statistics"
+        android:fontFamily="sans-serif-smallcaps"
         android:textSize="20dp"
         style="@style/TEXT_ON_OTHER"
         android:layout_margin="5dp"/>
@@ -176,7 +177,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="History"
+        android:text="history"
+        android:fontFamily="sans-serif-smallcaps"
         android:textSize="20dp"
         style="@style/TEXT_ON_OTHER"
         android:layout_margin="5dp"/>

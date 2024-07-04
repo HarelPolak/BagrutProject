@@ -10,10 +10,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="About Activity"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_gravity="center"
+        android:text="@string/about_the_app_string"
+        android:textSize="18dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:layout_margin="10dp"
         style="@style/TEXT_ON_PRIMARY"/>
 
 </LinearLayout>
