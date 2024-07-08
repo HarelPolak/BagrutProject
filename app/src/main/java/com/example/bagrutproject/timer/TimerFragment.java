@@ -22,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bagrutproject.dialogs.AddDialogClass;
 import com.example.bagrutproject.dialogs.EditDialogClass;
 import com.example.bagrutproject.core.MainActivity;
 import com.example.bagrutproject.R;
@@ -37,10 +38,10 @@ import java.util.TimerTask;
 public class TimerFragment extends Fragment implements View.OnTouchListener, View.OnClickListener, DialogInterface.OnDismissListener {
 
     View view_timer_fragment;
-    Dialog editDialog;
+    Dialog editDialog, addDialog;
     Animation celebrateAnimation;
     TextView tvTimer, tvScramble;
-    ImageButton ibEdit, ibDelete;
+    ImageButton ibEdit, ibDelete, ibReroll, ibAdd;
     Timer timer;
     TimerTask timerTask;
     Solve currentSolve;
@@ -62,7 +63,6 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_timer, container, false);
         view_timer_fragment = view.findViewById(R.id.view_timer_fragment);
         tvTimer = view.findViewById(R.id.tvTimer);
@@ -70,8 +70,12 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
 
         ibEdit = view.findViewById(R.id.ibEdit);
         ibDelete = view.findViewById(R.id.ibDelete);
+        ibReroll = view.findViewById(R.id.ibReroll);
+        ibAdd = view.findViewById(R.id.ibAdd);
         ibEdit.setOnClickListener(this);
         ibDelete.setOnClickListener(this);
+        ibReroll.setOnClickListener(this);
+        ibAdd.setOnClickListener(this);
 
         sh = new SolveHelper(getContext());
 
@@ -210,6 +214,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
                 currentSolve = sh.getSolveById(currentSolve.getSolveId());
                 tvTimer.setText(currentSolve.getDisplayPenaltyText());
             }
+            sh.close();
         }
     }
 
@@ -217,14 +222,26 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     public void onClick(View view) {
         if(view == ibEdit){
             if(currentSolve!=null && currentSolve.getSolveId()!=-1){
-                EditDialogClass editDialogClass = new EditDialogClass();
-                editDialog = editDialogClass.showEditDialog((Activity) getContext(), currentSolve);
+                editDialog = UtilDialogs.showEditDialog(getActivity(), currentSolve);
                 editDialog.setOnDismissListener(this);
             }
         }
         else if(view == ibDelete){
             if(currentSolve!=null && currentSolve.getSolveId()!=-1){
                 deleteRecentSolve();
+            }
+        }
+        else if(view == ibReroll){
+            if(!timerIsRunning && !timerShouldStart){
+                scramble = UtilScrambles.generateScramble();
+                tvScramble.setText(scramble);
+            }
+        }
+        else if (view == ibAdd){
+            if(!timerIsRunning && !timerShouldStart){
+                scramble = UtilScrambles.generateScramble();
+                tvScramble.setText(scramble);
+                addDialog = UtilDialogs.showAddDialog(getActivity(), MainActivity.cubeType, scramble, UtilText.getTodaysDate());
             }
         }
     }
@@ -238,7 +255,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     }
 
     private void deleteRecentSolve(){
-        UtilDialogs.showDeleteConfirmationDialog(getActivity(), new Runnable() {
+        UtilDialogs.showConfirmationDialog(getActivity(), new Runnable() {
             @Override
             public void run() {
                 sh.open();
@@ -248,7 +265,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
                 tvTimer.setText("00.00");
                 solveTime = 0;
             }
-        });
+        }, "Are you sure you want to delete this solve?");
     }
 
     @Override

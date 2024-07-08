@@ -1,5 +1,71 @@
 <resources>
     <string name="app_name">Cubix Timer</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="about_the_app_string">Cubix Timer is an app dedecated for solving the Rubik’s cube. In this app, you can learn how to solve different types of cubes, measure and improve your solving time using a timer, and track your progress using statistics. The application is intended both for people who don’t know how to solve a Rubik’s cube and want to learn, and for people who solve a Rubik’s cube at a professional level and are interested in improving.</string>
+    <string name="about_the_app_string">Cubix Timer is an app dedicated for solving the Rubik’s cube. In this app, you can learn how to solve different types of cubes, measure and improve your solving time using a timer, and track your progress using statistics. The application is intended both for people who don\’t know how to solve a Rubik’s cube and want to learn, and for people who solve a Rubik’s cube at a professional level and are interested in improving.</string>
+
+    <string name="introduction_to_cubing_title">Introduction To Cubing</string>
+    <string name="cubing_basics_title">Cubing Basics</string>
+    <string name="speedcubing_title">Speedcubing</string>
+    <string name="notation_systems_title">Notation Systems</string>
+    <string name="timing_and_penalties_title">Timing and Penalties</string>
+    <string name="cubing_basics_paragraph">Cubing revolves around solving Rubik\'s Cubes and similar puzzles using specific sequences of moves called algorithms. They act like step-by-step directions that help you fix a scrambled cube and put all the colors back in their right places. They\'re crucial because they show you exactly how to solve different patterns or positions on the cube. The way you write down these moves depends on the size of the cube, with each notation system designed to describe the exact twists and turns needed to solve it.\n</string>
+    <string name="speedcubing_paragraph">Speedcubing is a competitive form of solving Rubik\'s Cubes quickly. Speedcubers aim to solve the cube as fast as they can using practiced sequences of moves called algorithms. They dedicate extensive time to learning these algorithms to improve their solving times across cubes of various sizes. In speedcubing competitions, contestants are timed to determine how quickly they can solve the cube. Accuracy and efficiency are essential in these competitions.\n</string>
+    <string name="notation_systems_paragraph">Notations are symbols used to represent the moves in algorithms. In cubing, the notation system becomes more complex as the cube size increases.\n• 2x2 cube: Basic moves include F (Front), B (Back), R (Right), L (Left), U (Up), and D (Down), each representing a 90-degree turn of a single face.\n• 3x3 cube: Uses the same basic moves (F, B, R, L, U, D) and adds M (Middle), E (Equator), and S (Standing) to manipulate middle layers.\n• 4x4 cube: Expands on the 3x3 notation system with inner slice rotations (f, b, r, l, u, d) affecting single inner layers, and wide moves (Fw, Bw, Uw, Rw, Lw, Dw) combining outer and adjacent inner layer turns in one move, denoted by a capital letter followed by a lowercase \"w.\" \n     • additional notations: x, y and z means rotating the whole cube in the direction of the moves R, U and F respectively. \n</string>
+    <string name="timing_and_penalties_paragraph">When solving, cubers use a timer to measure and improve their solving speed. They start by scrambling the cube with randomly generated moves, creating a unique starting point for each solve. Before starting the timer by pressing and holding it, solvers briefly inspect the cube. The timer stops when they press it again after solving the cube. If the timer is stopped when the cube isn\'t fully solved, penalties are applied to ensure fairness:\n• A +2 second penalty is added if the cube is one move away from being solved. The solve remains valid, but two seconds are added to the time.\n• A Did Not Finish (DNF) penalty is given if the cube is more than one move away from being solved. The solve is not valid, and the solving time is disregarded.</string>
+
+    <string name="two_by_two_beginner_title">2x2 Beginner Method</string>
+    <string name="two_by_two_beginner_step1_title">1. Understanding the Basics</string>
+    <string name="two_by_two_beginner_step1_paragraph">The 2x2 cube is a simpler version of the classic 3x3 cube, with fewer pieces but the same fundamental movement principles. Basic moves include:\n\n• F (Front), B (Back), R (Right), L (Left), U (Up), D (Down): Each represents a 90-degree turn of a single face.\n\n</string>
+    <string name="two_by_two_beginner_step2_title">2. Solving the First Layer</string>
+    <string name="two_by_two_beginner_step2_paragraph">Start with any white piece on the top layer and align it with the corresponding center piece. Use moves like R U R\' to position and orient the white pieces correctly.\n\n</string>
+    <string name="two_by_two_beginner_step3_title">3. Solving the Final Layer</string>
+    <string name="two_by_two_beginner_step3_paragraph">The 2x2 cube doesn\'t have a traditional final layer like the 3x3 cube. Instead, it involves orienting the last layer corners and edges simultaneously.\n\n• Permuting Corners: Use algorithms such as R U R\' to cycle and orient the last layer corners.\n• Permuting Edges: Algorithms like U R U\' R\' U\' F\' U F help to position and orient the last layer edges.\n\n</string>
+    <string name="two_by_two_beginner_step4_title">4. Finishing and Checking</string>
+    <string name="two_by_two_beginner_step4_paragraph">Ensure all pieces are correctly aligned and oriented to match the color scheme of each face. Adjust using small move sequences until the cube is fully solved.\n\nThis beginner method provides a structured approach to solving a 2x2 Rubik\'s Cube, focusing on intuitive algorithms and systematic layer-by-layer solving techniques. Practice these steps to improve your solving speed and efficiency, essential for mastering the 2x2 cube.\n\n</string>
+
+    <string name="three_by_three_beginner_title">3x3 Beginner Method</string>
+    <string name="three_by_three_beginner_step1_title">1. Understanding the Basics</string>
+    <string name="three_by_three_beginner_step1_paragraph">The 3x3 cube is the classic Rubik\'s Cube with six faces and a complex internal mechanism. Basic moves include:\n\n• F (Front), B (Back), R (Right), L (Left), U (Up), D (Down): Each represents a 90-degree turn of a single face.\n• Additional moves like M (Middle), E (Equator), and S (Standing) manipulate middle layers.\n\n</string>
+    <string name="three_by_three_beginner_step2_title">2. Solving the Cross</string>
+    <string name="three_by_three_beginner_step2_paragraph">Start by solving the white cross on the bottom layer, aligning edge pieces with the center pieces of their respective sides. Use algorithms like F R U R\' U\' F\' to position and orient edge pieces correctly.\n\n</string>
+    <string name="three_by_three_beginner_step3_title">3. Solving the First Layer Corners</string>
+    <string name="three_by_three_beginner_step3_paragraph">Next, insert and orient the four white corner pieces. Algorithms such as R\' D\' R D help in positioning corners correctly.\n\n</string>
+    <string name="three_by_three_beginner_step4_title">4. Solving the Middle Layer Edges</string>
+    <string name="three_by_three_beginner_step4_paragraph">After completing the first layer, solve the middle layer by correctly positioning and orienting edge pieces using algorithms like U R U\' R\' U\' F\' U F.\n\n</string>
+    <string name="three_by_three_beginner_step5_title">5. Solving the Last Layer Cross</string>
+    <string name="three_by_three_beginner_step5_paragraph">Form a yellow cross on the top layer using algorithms like F R U R\' U\' F\'.\n\n</string>
+    <string name="three_by_three_beginner_step6_title">6. Orienting the Last Layer Corners</string>
+    <string name="three_by_three_beginner_step6_paragraph">Position and orient the last layer corners using algorithms such as U R U\' L\' U R\' U\' L.\n\n</string>
+    <string name="three_by_three_beginner_step7_title">7. Permuting the Last Layer Edges</string>
+    <string name="three_by_three_beginner_step7_paragraph">Finally, permute the last layer edges using algorithms like R2 U2 R U2 R2 U2 R2 U2 R until all edges are correctly positioned and oriented.\n\n</string>
+    <string name="three_by_three_beginner_step8_title">8. Finishing and Checking</string>
+    <string name="three_by_three_beginner_step8_paragraph">Ensure all pieces are correctly aligned and oriented to match the color scheme of each face. Adjust using small move sequences until the cube is fully solved.\n\nThis beginner method provides a systematic approach to solving a 3x3 Rubik\'s Cube, focusing on layer-by-layer techniques and algorithms. Practice these steps to improve your solving speed and efficiency.\n\n</string>
+
+    <string name="three_by_three_cfop_title">3x3 CFOP Method</string>
+    <string name="three_by_three_cfop_step1_title">1. Understanding CFOP Method</string>
+    <string name="three_by_three_cfop_step1_paragraph">The CFOP method, also known as Fridrich Method, is an advanced speedcubing technique that breaks down the solving process into four main steps: Cross, F2L (First Two Layers), OLL (Orientation of the Last Layer), and PLL (Permutation of the Last Layer). This method is highly efficient and widely used by speedcubers.\n\n</string>
+    <string name="three_by_three_cfop_step2_title">2. Solving the Cross</string>
+    <string name="three_by_three_cfop_step2_paragraph">Begin by solving the white cross on the bottom layer. Align edge pieces with the corresponding center pieces using intuitive or algorithmic methods. Algorithms like F R U R\' U\' F\' are commonly used to position and orient the cross edges.\n\n</string>
+    <string name="three_by_three_cfop_step3_title">3. F2L (First Two Layers)</string>
+    <string name="three_by_three_cfop_step3_paragraph">After forming the cross, insert the four corner-edge pairs into the first two layers simultaneously. This step combines intuitive block-building techniques with algorithms to pair and insert these pieces efficiently.\n\n</string>
+    <string name="three_by_three_cfop_step4_title">4. OLL (Orientation of the Last Layer)</string>
+    <string name="three_by_three_cfop_step4_paragraph">Once F2L is complete, orient all the last layer pieces so that the entire top face shows the same color. Use algorithms from the OLL algorithm set to achieve this. These algorithms orient all the top layer pieces while preserving the edge and corner orientations.\n\n</string>
+    <string name="three_by_three_cfop_step5_title">5. PLL (Permutation of the Last Layer)</string>
+    <string name="three_by_three_cfop_step5_paragraph">Finally, permute all the last layer pieces to solve the cube. PLL algorithms are used to move the pieces into their correct positions without affecting their orientations. These algorithms complete the solve by solving the last layer completely.\n\n</string>
+    <string name="three_by_three_cfop_step6_title">6. Finishing and Checking</string>
+    <string name="three_by_three_cfop_step6_paragraph">Ensure all pieces are correctly aligned and oriented according to the cube\'s color scheme. Make any necessary adjustments using small move sequences until the cube is fully solved. This method focuses on efficiency and speed, making it essential to practice and familiarize yourself with the algorithms to improve solving times.\n\n</string>
+
+    <string name="four_by_four_beginner_title">4x4 Beginner Method</string>
+    <string name="four_by_four_beginner_step1_title">1. Understanding the Basics</string>
+    <string name="four_by_four_beginner_step1_paragraph">The 4x4 cube expands on the 3x3 notation system with inner slice rotations (f, b, r, l, u, d) affecting single inner layers, and wide moves (Fw, Bw, Uw, Rw, Lw, Dw) combining outer and adjacent inner layer turns in one move, denoted by a capital letter followed by a lowercase "w." Basic moves include:\n\n• F (Front), B (Back), R (Right), L (Left), U (Up), D (Down): Each represents a 90-degree turn of a single face.\n\n</string>
+    <string name="four_by_four_beginner_step2_title">2. Solving the Centers</string>
+    <string name="four_by_four_beginner_step2_paragraph">Start by solving the centers of each face. Align the center pieces with the corresponding color scheme using intuitive movements to ensure all centers are correctly matched.\n\n</string>
+    <string name="four_by_four_beginner_step3_title">3. Pairing Edge Pieces</string>
+    <string name="four_by_four_beginner_step3_paragraph">Pair edge pieces from the outer layers to form complete edge pairs. Use algorithms like R U R\' U\' to pair edges correctly without disrupting already paired edges, and the algorithm R U R\' F R\' F\' R for flipping an edge before pairing it.\n\n</string>
+    <string name="four_by_four_beginner_step4_title">4. Completing the Cube like a 3x3</string>
+    <string name="four_by_four_beginner_step4_paragraph">The cube should resemble a 3x3 once the edge pairs are complete. If there is a case that doesn\’t exist in 3x3 then it\’s called a parity. There are algorithms for solving them; OLL Parity: Rw U2 x Rw U2 Rw U2 Rw\' U2 Lw U2 Rw\' U2 Rw U2 Rw\' U2 Rw\', PLL Parity: r2 U2 r2 Uw2 r2 Uw2.\n\n</string>
+    <string name="four_by_four_beginner_step5_title">5. Finishing and Checking</string>
+    <string name="four_by_four_beginner_step5_paragraph">Ensure all layers are correctly aligned and oriented according to the cube\'s color scheme. Adjust using intuitive moves or small algorithms until the cube is fully solved.\n\n</string>
 </resources>
+
+

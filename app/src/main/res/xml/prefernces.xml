@@ -37,7 +37,7 @@
         <SwitchPreferenceCompat
             app:key="celebrate"
             app:title="Celebrate"
-            app:summary="You will be notified when there is a new personal best"
+            app:summary="You will be infromed when you set a new personal best"
             app:defaultValue="false" />
     </PreferenceCategory>
 

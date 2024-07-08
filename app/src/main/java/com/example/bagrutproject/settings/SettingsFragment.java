@@ -17,17 +17,17 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.prefernces , rootKey);
 
-        Preference theme = findPreference("theme");
-        if(theme!=null){
-            theme.setOnPreferenceChangeListener((preference, newValue) -> {
-                if(newValue.equals("classic")) {
-
-                }
-                else if(newValue.equals("dark")){
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                }
-                return true;
-            });
-        }
+//        Preference theme = findPreference("theme");
+//        if(theme!=null){
+//            theme.setOnPreferenceChangeListener((preference, newValue) -> {
+//                if(newValue.equals("classic")) {
+//
+//                }
+//                else if(newValue.equals("dark")){
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//                }
+//                return true;
+//            });
+//        }
     }
 }

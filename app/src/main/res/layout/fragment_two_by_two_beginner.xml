@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".instructions.TwoByTwoBeginnerFragment">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/two_by_two_beginner_title"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_margin="10dp"
+                style="@style/TEXT_ON_PRIMARY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/two_by_two_beginner_step1_title"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_margin="10dp"
+                style="@style/TEXT_ON_PRIMARY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/two_by_two_beginner_step1_paragraph"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif"
+                android:layout_margin="10dp"
+                style="@style/TEXT_ON_PRIMARY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/two_by_two_beginner_step2_title"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_margin="10dp"
+                style="@style/TEXT_ON_PRIMARY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/two_by_two_beginner_step2_paragraph"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif"
+                android:layout_margin="10dp"
+                style="@style/TEXT_ON_PRIMARY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/two_by_two_beginner_step3_title"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_margin="10dp"
+                style="@style/TEXT_ON_PRIMARY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/two_by_two_beginner_step3_paragraph"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif"
+                android:layout_margin="10dp"
+                style="@style/TEXT_ON_PRIMARY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/two_by_two_beginner_step4_title"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_margin="10dp"
+                style="@style/TEXT_ON_PRIMARY" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/two_by_two_beginner_step4_paragraph"
+                android:textSize="18dp"
+                android:fontFamily="sans-serif"
+                android:layout_margin="10dp"
+                style="@style/TEXT_ON_PRIMARY" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

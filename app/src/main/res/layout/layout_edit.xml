@@ -88,7 +88,6 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
             android:textSize="10dp"
             style="@style/TEXT_ON_OTHER"
             android:id="@+id/etCommentDialog" />
@@ -134,8 +133,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="10dp">
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/btnOkDialog"
@@ -143,15 +141,25 @@
             android:layout_height="wrap_content"
             android:text="ok"
             android:textSize="20dp"
+            android:layout_margin="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
+            android:id="@+id/ibShare"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/baseline_share_24"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ibDeleteDialog" />
+
+        <ImageButton
             android:id="@+id/ibDeleteDialog"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@drawable/baseline_delete_24"
-            android:padding="10dp"
+            android:layout_margin="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

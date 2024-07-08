@@ -37,7 +37,6 @@ public class StatsFragment extends Fragment implements OnItemClickListener, OnIt
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_stats, container, false);
         sh = new SolveHelper(getContext());
 
@@ -84,14 +83,13 @@ public class StatsFragment extends Fragment implements OnItemClickListener, OnIt
 
     @Override
     public void onItemClick(int position) {
-        EditDialogClass editDialogClass = new EditDialogClass();
-        editDialog = editDialogClass.showEditDialog((Activity) getContext(), solves.get(position));
+        editDialog = UtilDialogs.showEditDialog((Activity) getContext(), solves.get(position));
         editDialog.setOnDismissListener(this);
     }
 
     @Override
     public void onItemLongClicked(int position) {
-        UtilDialogs.showDeleteConfirmationDialog(getActivity(), new Runnable() {
+        UtilDialogs.showConfirmationDialog(getActivity(), new Runnable() {
             @Override
             public void run() {
                 sh.open();
@@ -99,7 +97,7 @@ public class StatsFragment extends Fragment implements OnItemClickListener, OnIt
                 sh.close();
                 updateData();
             }
-        });
+        }, "Are you sure you want to delete this solve?");
     }
 
     @Override

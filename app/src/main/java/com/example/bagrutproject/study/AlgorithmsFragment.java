@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.bagrutproject.R;
+import com.example.bagrutproject.instructions.InstructionActivity;
 
 public class AlgorithmsFragment extends Fragment implements AdapterView.OnItemClickListener {
 
@@ -24,8 +25,8 @@ public class AlgorithmsFragment extends Fragment implements AdapterView.OnItemCl
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         studyArr = new Study[]{
-                new Study("3x3 CFOP OLL", "Algorithms", R.drawable.three_by_three_icon, R.drawable.oll_algorithms),
-                new Study("3x3 CFOP PLL", "Algorithms", R.drawable.three_by_three_icon, R.drawable.pll_algorithms),
+                new Study("3x3 CFOP OLL", "Algorithms", R.drawable.three_by_three_icon, "oll"),
+                new Study("3x3 CFOP PLL", "Algorithms", R.drawable.three_by_three_icon, "pll"),
         };
     }
 
@@ -42,8 +43,8 @@ public class AlgorithmsFragment extends Fragment implements AdapterView.OnItemCl
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(getActivity(), InstructionActivity.class);
-        intent.putExtra("type", studyArr[i].getType());
-        intent.putExtra("image", studyArr[i].getImage());
+        intent.putExtra("title", studyArr[i].getType());
+        intent.putExtra("fragmentIdentifier", studyArr[i].getFragmentIdentifier());
         startActivity(intent);
     }
 }

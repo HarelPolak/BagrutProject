@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.bagrutproject.R;
+import com.example.bagrutproject.instructions.InstructionActivity;
 
 public class TutorialsFragment extends Fragment implements AdapterView.OnItemClickListener {
 
@@ -23,11 +24,11 @@ public class TutorialsFragment extends Fragment implements AdapterView.OnItemCli
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         studyArr = new Study[]{
-                new Study("How to Read Notations", "Tutorials", R.drawable.notations_icon, R.drawable.notations_tutorial),
-                new Study("2x2 Beginner Method", "Tutorials", R.drawable.two_by_two_icon, R.drawable.two_by_two_beginner_tutorial),
-                new Study("3x3 Beginner Method", "Tutorials", R.drawable.three_by_three_icon, R.drawable.three_by_three_beginner_tutorial),
-                new Study("3x3 CFOP Method", "Tutorials", R.drawable.three_by_three_icon, R.drawable.three_by_three_cfop_tutorial),
-                new Study("4x4 Beginner Method", "Tutorials", R.drawable.four_by_four_icon, R.drawable.four_by_four_beginner_tutorial)
+                new Study("Introduction To Cubing", "Tutorials", R.drawable.notations_icon,  "introduction"),
+                new Study("2x2 Beginner Method", "Tutorials", R.drawable.two_by_two_icon, "two_by_two_beginner"),
+                new Study("3x3 Beginner Method", "Tutorials", R.drawable.three_by_three_icon, "three_by_three_beginner"),
+                new Study("3x3 CFOP Method", "Tutorials", R.drawable.three_by_three_icon, "three_by_three_cfop"),
+                new Study("4x4 Beginner Method", "Tutorials", R.drawable.four_by_four_icon, "four_by_four_beginner")
         };
     }
 
@@ -44,8 +45,8 @@ public class TutorialsFragment extends Fragment implements AdapterView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(getActivity(), InstructionActivity.class);
-        intent.putExtra("type", studyArr[i].getType());
-        intent.putExtra("image", studyArr[i].getImage());
+        intent.putExtra("title", studyArr[i].getType());
+        intent.putExtra("fragmentIdentifier", studyArr[i].getFragmentIdentifier());
         startActivity(intent);
     }
 }

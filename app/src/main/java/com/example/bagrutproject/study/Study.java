@@ -1,17 +1,19 @@
 package com.example.bagrutproject.study;
 
+import androidx.fragment.app.Fragment;
+
 public class Study {
 
     String name;
     String type;
     int icon;
-    int image;
+    String fragmentIdentifier;
 
-    public Study(String name, String type, int icon, int image) {
+    public Study(String name, String type, int icon, String fragmentIdentifier) {
         this.name = name;
         this.type = type;
         this.icon = icon;
-        this.image = image;
+        this.fragmentIdentifier = fragmentIdentifier;
     }
 
     public String getName() {
@@ -38,11 +40,11 @@ public class Study {
         this.icon = icon;
     }
 
-    public int getImage() {
-        return image;
+    public String getFragmentIdentifier() {
+        return fragmentIdentifier;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setFragmentIdentifier(String fragmentIdentifier) {
+        this.fragmentIdentifier = fragmentIdentifier;
     }
 }
