@@ -19,9 +19,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/introduction_to_cubing_title"
                 android:textSize="18dp"
+                android:textColor="@color/black"
+                android:background="@drawable/title_background"
+                android:padding="5dp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:layout_margin="10dp"
-                style="@style/TEXT_ON_PRIMARY" />
+                android:layout_margin="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -29,8 +31,7 @@
                 android:text="@string/cubing_basics_title"
                 android:textSize="18dp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:layout_margin="10dp"
-                style="@style/TEXT_ON_PRIMARY" />
+                android:layout_margin="10dp" />
 
             <TextView
             android:layout_width="match_parent"
@@ -38,8 +39,7 @@
             android:text="@string/cubing_basics_paragraph"
             android:textSize="18dp"
             android:fontFamily="sans-serif"
-            android:layout_margin="10dp"
-            style="@style/TEXT_ON_PRIMARY" />
+            android:layout_margin="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -47,8 +47,7 @@
                 android:text="@string/speedcubing_title"
                 android:textSize="18dp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:layout_margin="10dp"
-                style="@style/TEXT_ON_PRIMARY" />
+                android:layout_margin="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -56,8 +55,7 @@
                 android:text="@string/speedcubing_paragraph"
                 android:textSize="18dp"
                 android:fontFamily="sans-serif"
-                android:layout_margin="10dp"
-                style="@style/TEXT_ON_PRIMARY" />
+                android:layout_margin="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -65,8 +63,7 @@
                 android:text="@string/notation_systems_title"
                 android:textSize="18dp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:layout_margin="10dp"
-                style="@style/TEXT_ON_PRIMARY" />
+                android:layout_margin="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -74,8 +71,7 @@
                 android:text="@string/notation_systems_paragraph"
                 android:textSize="18dp"
                 android:fontFamily="sans-serif"
-                android:layout_margin="10dp"
-                style="@style/TEXT_ON_PRIMARY" />
+                android:layout_margin="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -83,8 +79,7 @@
                 android:text="@string/timing_and_penalties_title"
                 android:textSize="18dp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:layout_margin="10dp"
-                style="@style/TEXT_ON_PRIMARY" />
+                android:layout_margin="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -92,8 +87,7 @@
                 android:text="@string/timing_and_penalties_paragraph"
                 android:textSize="18dp"
                 android:fontFamily="sans-serif"
-                android:layout_margin="10dp"
-                style="@style/TEXT_ON_PRIMARY" />
+                android:layout_margin="10dp" />
 
         </LinearLayout>
     </ScrollView>

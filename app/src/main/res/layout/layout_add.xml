@@ -20,8 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:textSize="15dp"
-        android:inputType="numberDecimal"
-        style="@style/TEXT_ON_OTHER"/>
+        android:inputType="numberDecimal" />
 
     <Button
         android:id="@+id/btnOk"

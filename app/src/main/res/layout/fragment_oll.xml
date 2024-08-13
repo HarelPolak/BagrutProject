@@ -5,18 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".instructions.OllFragment">
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/algorithmsRv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            android:id="@+id/iv" />
-
-    </ScrollView>
+        android:layout_margin="5dp"/>
 
 </FrameLayout>

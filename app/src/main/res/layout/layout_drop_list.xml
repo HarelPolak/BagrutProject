@@ -5,4 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:ellipsize="marquee"
-    style="@style/SPINNER_ITEM"/>
+    android:background="@color/white"
+    android:textColor="@color/black"
+    style="?android:attr/spinnerDropDownItemStyle"/>

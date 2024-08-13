@@ -4,48 +4,6 @@
         <item name="colorPrimary">@color/blue_200</item>
         <item name="colorPrimaryDark">@color/blue_300</item>
         <item name="colorAccent">@color/orange_100</item>
-        <item name="android:windowBackground">@color/blue_100</item>
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColorSecondary">@color/white_100</item>
-    </style>
-
-    <style name="TEXT_ON_PRIMARY">
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="TEXT_ON_OTHER">
-        <item name="android:textColor">@color/black</item>
-    </style>
-
-    <style name="DIVIDER">
-        <item name="android:background">@color/white_100</item>
-    </style>
-
-    <style name="IMAGE_BUTTON_ICON">
-        <item name="android:backgroundTint">@color/white</item>
-    </style>
-
-    <style name="CURVED_BORDER">
-        <item name="android:backgroundTint">@color/white</item>
-    </style>
-
-    <style name="BottomNavigationTheme" parent="AppTheme">
-        <item name="android:background">@color/blue_200</item>
-        <item name="colorPrimary">@color/orange_100</item>
-    </style>
-
-    <style name="tabLayoutTheme" parent="AppTheme">
-        <item name="android:background">@color/blue_100</item>
-        <item name="colorPrimary">@color/orange_100</item>
-    </style>
-
-    <style name="SPINNER_TITLE" parent="@style/Widget.AppCompat.DropDownItem.Spinner">
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="SPINNER_ITEM" parent="@style/Widget.AppCompat.DropDownItem.Spinner">
-        <item name="android:background">@color/white</item>
-        <item name="android:textColor">@color/black</item>
     </style>
 
 </resources>

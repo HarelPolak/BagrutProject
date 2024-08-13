@@ -3,13 +3,14 @@
     <color name="blue_100">#1F52FF</color>
     <color name="blue_200">#1540D3</color>
     <color name="blue_300">#0E31AA</color>
+    <color name="orange_50">#FBF6CE</color>
     <color name="orange_100">#DFBD13</color>
     <color name="white">#FFFFFF</color>
-    <color name="white_100">#C6C6C6</color>
-    <color name="white_200">#818181</color>
     <color name="black">#000000</color>
-    <color name="gray_100">#8A000000</color>
+    <color name="gray_100">#B3000000</color>
+    <color name="gray_200">#8A000000</color>
+    <color name="gray_500">#818181</color>
+    <color name="gray_600">#C6C6C6</color>
     <color name="wait_color">#FF0000</color>
     <color name="start_color">#2FFF00</color>
-
 </resources>

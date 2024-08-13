@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
@@ -22,8 +21,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bagrutproject.dialogs.AddDialogClass;
-import com.example.bagrutproject.dialogs.EditDialogClass;
 import com.example.bagrutproject.core.MainActivity;
 import com.example.bagrutproject.R;
 import com.example.bagrutproject.stats.Solve;
@@ -39,7 +36,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
 
     View view_timer_fragment;
     Dialog editDialog, addDialog;
-    Animation celebrateAnimation;
+    Animation celebrateAnimation, spinAnimation, tapAnimation;
     TextView tvTimer, tvScramble;
     ImageButton ibEdit, ibDelete, ibReroll, ibAdd;
     Timer timer;
@@ -80,6 +77,8 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         sh = new SolveHelper(getContext());
 
         celebrateAnimation = AnimationUtils.loadAnimation(getContext(),R.anim.celecrate);
+        spinAnimation = AnimationUtils.loadAnimation(getContext(),R.anim.spin);
+        tapAnimation = AnimationUtils.loadAnimation(getContext(),R.anim.tap);
         timer = new Timer();
         timerIsRunning = false;
         timerShouldStart = false;
@@ -126,7 +125,8 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
         if (view == view_timer_fragment) {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 if(timerIsRunning){
-                    stopTimer();
+                    if(solveTime >= 10)
+                        stopTimer();
                 }
                 else{
                     if(holdToStart){
@@ -143,7 +143,7 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
                 return true;
             }
             else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                tvTimer.setTextColor(Color.WHITE);
+                tvTimer.setTextColor(ContextCompat.getColor(getActivity(), R.color.gray_100));
                 handler.removeCallbacks(runnable);
                 if (timerShouldStart) {
                     startTimer();
@@ -222,23 +222,27 @@ public class TimerFragment extends Fragment implements View.OnTouchListener, Vie
     public void onClick(View view) {
         if(view == ibEdit){
             if(currentSolve!=null && currentSolve.getSolveId()!=-1){
+                ibEdit.startAnimation(tapAnimation);
                 editDialog = UtilDialogs.showEditDialog(getActivity(), currentSolve);
                 editDialog.setOnDismissListener(this);
             }
         }
         else if(view == ibDelete){
             if(currentSolve!=null && currentSolve.getSolveId()!=-1){
+                ibDelete.startAnimation(tapAnimation);
                 deleteRecentSolve();
             }
         }
         else if(view == ibReroll){
             if(!timerIsRunning && !timerShouldStart){
+                ibReroll.startAnimation(spinAnimation);
                 scramble = UtilScrambles.generateScramble();
                 tvScramble.setText(scramble);
             }
         }
         else if (view == ibAdd){
             if(!timerIsRunning && !timerShouldStart){
+                ibAdd.startAnimation(tapAnimation);
                 scramble = UtilScrambles.generateScramble();
                 tvScramble.setText(scramble);
                 addDialog = UtilDialogs.showAddDialog(getActivity(), MainActivity.cubeType, scramble, UtilText.getTodaysDate());

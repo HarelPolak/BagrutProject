@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:text="00.00"
             android:textSize="40dp"
+            android:textColor="@color/gray_100"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,7 +35,7 @@
 
     <View  android:layout_width="match_parent"
         android:layout_height="1dp"
-        style="@style/DIVIDER"/>
+        android:background="@color/gray_600"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,7 +90,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="10dp"
-            style="@style/TEXT_ON_OTHER"
             android:id="@+id/etCommentDialog" />
     </LinearLayout>
 

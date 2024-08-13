@@ -11,7 +11,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        android:background="@drawable/title_background"
+        android:layout_margin="5dp">
 
         <ImageButton
             android:id="@+id/ibEdit"
@@ -20,8 +22,7 @@
             android:layout_margin="20dp"
             android:background="@drawable/baseline_edit_note_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/IMAGE_BUTTON_ICON"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/ibDelete"
@@ -30,8 +31,7 @@
             android:layout_margin="20dp"
             android:background="@drawable/baseline_delete_24"
             app:layout_constraintStart_toEndOf="@+id/ibEdit"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/IMAGE_BUTTON_ICON"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/ibAdd"
@@ -40,8 +40,7 @@
             android:layout_margin="20dp"
             android:background="@drawable/baseline_add_24"
             app:layout_constraintEnd_toStartOf="@+id/ibReroll"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/IMAGE_BUTTON_ICON"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/ibReroll"
@@ -50,8 +49,7 @@
             android:layout_margin="20dp"
             android:background="@drawable/baseline_autorenew_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/IMAGE_BUTTON_ICON"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -68,9 +66,9 @@
             android:layout_height="wrap_content"
             android:text="00.00"
             android:textSize="80dp"
+            android:textColor="@color/gray_100"
             android:gravity="center"
-            android:layout_gravity="center"
-            style="@style/TEXT_ON_PRIMARY"/>
+            android:layout_gravity="center" />
 
         <TextView
             android:id="@+id/tvScramble"
@@ -79,8 +77,7 @@
             android:text="L' B2 D2 R2 D' R2 B2 L2 D' F2 D R2 B' D F L2 B U B2 L R'"
             android:textSize="15dp"
             android:gravity="center"
-            android:layout_marginHorizontal="10dp"
-            style="@style/TEXT_ON_PRIMARY"/>
+            android:layout_marginHorizontal="10dp" />
 
     </LinearLayout>
 

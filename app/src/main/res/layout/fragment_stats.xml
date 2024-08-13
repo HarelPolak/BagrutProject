@@ -12,18 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="statistics"
+        android:textColor="@color/gray_100"
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="20dp"
-        style="@style/TEXT_ON_OTHER"
-        android:layout_margin="5dp"/>
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:background="@drawable/title_background"/>
 
     <TableLayout
         android:id="@+id/table_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:background="@drawable/curved_border"
-        style="@style/CURVED_BORDER">
+        android:background="@drawable/curved_border">
 
         <TableRow
             android:layout_width="match_parent">
@@ -40,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="current"
+                android:textColor="@color/gray_100"
                 android:gravity="center" />
 
             <TextView
@@ -47,12 +49,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="best"
+                android:textColor="@color/gray_100"
                 android:gravity="center" />
         </TableRow>
 
         <View  android:layout_width="match_parent"
             android:layout_height="1dp"
-            style="@style/DIVIDER"/>
+            android:background="@color/gray_600"/>
 
         <TableRow
             android:layout_width="match_parent">
@@ -62,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="time"
+                android:textColor="@color/gray_100"
                 android:gravity="center" />
 
             <TextView
@@ -83,7 +87,7 @@
 
         <View  android:layout_width="match_parent"
             android:layout_height="1dp"
-            style="@style/DIVIDER"/>
+            android:background="@color/gray_600"/>
 
         <TableRow
             android:layout_width="match_parent">
@@ -93,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="ao5"
+                android:textColor="@color/gray_100"
                 android:gravity="center" />
 
             <TextView
@@ -114,7 +119,7 @@
 
         <View  android:layout_width="match_parent"
             android:layout_height="1dp"
-            style="@style/DIVIDER"/>
+            android:background="@color/gray_600"/>
 
         <TableRow
             android:layout_width="match_parent">
@@ -124,6 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="ao12"
+                android:textColor="@color/gray_100"
                 android:gravity="center" />
 
             <TextView
@@ -145,7 +151,7 @@
 
         <View  android:layout_width="match_parent"
             android:layout_height="1dp"
-            style="@style/DIVIDER"/>
+            android:background="@color/gray_600"/>
 
         <TableRow
             android:layout_width="match_parent">
@@ -155,6 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="mean"
+                android:textColor="@color/gray_100"
                 android:gravity="center" />
 
             <TextView
@@ -178,10 +185,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="history"
+        android:textColor="@color/gray_100"
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="20dp"
-        style="@style/TEXT_ON_OTHER"
-        android:layout_margin="5dp"/>
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:background="@drawable/title_background"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/solveRecyclerView"
